@@ -29,8 +29,8 @@ const store = async (req, res, next) => {
 const index = async (req, res, next) => {
     try {
 
-        const categories = await prisma.service.findMany();
-        res.json(categories);
+        const services = await prisma.service.findMany();
+        res.json(services);
     } catch (err) {
         errorHandler(err, req, res);
     }
