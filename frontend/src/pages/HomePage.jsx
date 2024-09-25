@@ -1,6 +1,26 @@
+import axios from "../utils/axiosClient.js";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar/Navbar.jsx";
+import { Link } from "react-router-dom";
+import ApartmentCard from "../components/Apartments/ApartmentCard/ApartmentCard.jsx";
 
 const Home = () => {
+
+    // useState degli appartamenti
+    const [apartments, setApartments] = useState([]);
+
+    // Fetch degli appartamenti
+    const fecthApartments = async () => {
+        const res = await axios.get(`/apartments`);
+        const newApartments = res.data.data;
+        setApartments(newApartments);
+    };
+
+    // useEffect degli appartamenti
+    useEffect(() => {
+        fecthApartments();
+    }, []);
+
     return (
         <div>
 
@@ -17,6 +37,42 @@ const Home = () => {
                             <div className="button about" role="button">About Us</div>
                             <div className="button apartments" role="button">See Apartments</div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="apartments">
+                <div className="container">
+                    <div className="row">
+                        {apartments.length === 0 ? (
+                            <div className="col-12">
+
+                                {/* Nel caso non ci appartamenti */}
+                                <p className="text-center text-white h3">Apartments not found!</p>
+
+                            </div>
+                        ) : (
+                            apartments.map(({ id, title, slug, cover, description, visible, beds, sqm }) => (
+                                visible === true &&
+                                <div key={id} className="col-6">
+
+                                    {/* Tasto show del singolo appartamento */}
+                                    <Link to={`/apartments/${slug}`} style={{ textDecoration: 'none', color: 'black' }}>
+
+                                        {/* Card dell'appartamento */}
+                                        <ApartmentCard
+                                            title={title}
+                                            slug={slug}
+                                            cover={cover}
+                                            description={description}
+                                            beds={beds}
+                                            sqm={sqm}
+                                        />
+
+                                    </Link>
+                                </div>
+                            ))
+                        )}
                     </div>
                 </div>
             </section>
