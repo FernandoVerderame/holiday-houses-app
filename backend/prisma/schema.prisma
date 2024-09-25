@@ -24,7 +24,7 @@ model Apartment {
   beds        Int
   bathrooms   Int
   sqm         Int
-  guest       Int
+  guests      Int
   address     String
   latitude    Decimal   @db.Decimal(9, 6)
   longitude   Decimal   @db.Decimal(9, 6)
@@ -42,7 +42,7 @@ model User {
   password     String
   apartments   Apartment[]
   messages     Message[]
-  isAdmin      Boolean     @default(false)
+  isAdmin      Boolean     @default(true)
   isSuperAdmin Boolean     @default(false)
   createdAt    DateTime    @default(now())
   updatedAt    DateTime    @updatedAt

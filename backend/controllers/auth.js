@@ -30,7 +30,7 @@ const register = async (req, res) => {
         const token = generateToken({
             email: user.email,
             name: user.name,
-            isAdmin: false,
+            isAdmin: true,
             isSuperAdmin: false
         });
 
