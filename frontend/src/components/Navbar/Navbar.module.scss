@@ -1,6 +1,5 @@
 nav {
     height: 60px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 
     .logo {
         width: 40px;
@@ -10,28 +9,17 @@ nav {
     }
 
     li {
-        font-size: 16px;
-        font-weight: 700;
+        font-size: 18px;
+        font-weight: 600;
         text-transform: uppercase;
 
         .active {
-            border-bottom: 2.5px solid black;
+            border-bottom: 2.5px solid white;
         }
     }
 
     .login {
         color: white;
-        text-transform: uppercase;
         background-color: #c6a47e;
-        font-size: 12px;
-        font-weight: 700;
-        padding: 8px 28px;
-        border-radius: 0;
-        text-decoration: none;
-
-        &:hover {
-            opacity: 0.8;
-            color: white;
-        }
     }
 }

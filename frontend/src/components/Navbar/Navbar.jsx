@@ -20,30 +20,30 @@ const Navbar = () => {
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0 fs-5 d-flex gap-5">
                             <li className="nav-item">
                                 <NavLink
-                                    className={({ isActive }) => `nav-link p-0 ${isActive ? navbarStyle.active : ''}`}
+                                    className={({ isActive }) => `nav-link text-white p-0 ${isActive ? navbarStyle.active : ''}`}
                                     to={'/'}>Home</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink
-                                    className={({ isActive }) => `nav-link p-0 ${isActive ? navbarStyle.active : ''}`}
-                                    to={'/photos'}>Chi siamo</NavLink>
+                                    className={({ isActive }) => `nav-link text-white p-0 ${isActive ? navbarStyle.active : ''}`}
+                                    to={'/photos'}>About Us</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink
-                                    className={({ isActive }) => `nav-link p-0 ${isActive ? navbarStyle.active : ''}`}
-                                    to={'/categories'}>Appartamenti</NavLink>
+                                    className={({ isActive }) => `nav-link text-white p-0 ${isActive ? navbarStyle.active : ''}`}
+                                    to={'/categories'}>Apartments</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink
-                                    className={({ isActive }) => `nav-link p-0 ${isActive ? navbarStyle.active : ''}`}
-                                    to={'/categories'}>Contattaci</NavLink>
+                                    className={({ isActive }) => `nav-link text-white p-0 ${isActive ? navbarStyle.active : ''}`}
+                                    to={'/categories'}>Contact Us</NavLink>
                             </li>
                         </ul>
                     </div>
                     <div className="right-nav w-25 d-flex justify-content-end">
                         {!isLoggedIn &&
                             <div className="d-flex gap-2">
-                                <NavLink to={'/login'} className={`${navbarStyle.login}`}>Login</NavLink>
+                                <NavLink to={'/login'} className={`${navbarStyle.login} button`}>Login</NavLink>
                             </div>
                         }
                         {isLoggedIn &&
