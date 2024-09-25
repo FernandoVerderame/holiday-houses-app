@@ -25,7 +25,7 @@ const Home = () => {
     }, []);
 
     return (
-        <div>
+        <>
 
             {/* Jumbotron */}
             <section id="jumbotron">
@@ -123,7 +123,7 @@ const Home = () => {
                 </div>
             </section>
 
-        </div >
+        </>
     );
 }
 
