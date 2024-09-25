@@ -88,7 +88,7 @@ const Home = () => {
                     <h2>Our Homestay</h2>
                     <h4>We have the best rooms for you</h4>
 
-                    <div className="row gap-3">
+                    <div className="row g-5">
                         {apartments.length === 0 ? (
                             <div className="col-12">
 
