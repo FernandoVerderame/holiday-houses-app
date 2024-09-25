@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import { scroller } from 'react-scroll'; // Importa scroller da react-scroll
 import { useAuth } from "../../contexts/AuthContext";
 import logo from '../../assets/images/logo.png';
 import navbarStyle from './Navbar.module.scss';
@@ -6,6 +7,16 @@ import navbarStyle from './Navbar.module.scss';
 const Navbar = () => {
 
     const { isLoggedIn, logout, user } = useAuth();
+
+    const location = useLocation(); // Ottieni la location corrente
+
+    // Funzione per scrollare alla sezione "apartments" se sei sulla home
+    const handleScrollToSection = () => {
+        scroller.scrollTo('apartments', {
+            smooth: true,
+            duration: 500
+        });
+    };
 
     return (
         <header>
@@ -30,8 +41,17 @@ const Navbar = () => {
                             </li>
                             <li className="nav-item">
                                 <NavLink
-                                    className={({ isActive }) => `nav-link text-white p-0 ${isActive ? navbarStyle.active : ''}`}
-                                    to={'/categories'}>Apartments</NavLink>
+                                    className="nav-link text-white p-0"
+                                    to="/#apartments" // Naviga verso la home con l'anchor
+                                    onClick={(e) => {
+                                        if (location.pathname === '/') { // Se sei già sulla home
+                                            e.preventDefault(); // Impedisci la navigazione
+                                            handleScrollToSection(); // Esegui lo scroll
+                                        }
+                                    }}
+                                >
+                                    Apartments
+                                </NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink
