@@ -98,7 +98,7 @@ const store = async (req, res) => {
 const index = async (req, res) => {
     try {
         const where = {};
-        const { visible, title, page = 1, limit = 9, user } = req.query;
+        const { visible, page = 1, limit = 9 } = req.query;
 
         // Filtro pubblicato
         if (visible === 'true') {
@@ -107,15 +107,10 @@ const index = async (req, res) => {
             where.visible = false
         }
 
-        // Filtro per titolo
-        if (title) {
-            where.title = { contains: title }
-        }
-
         // Paginazione
         const offset = (page - 1) * limit;
 
-        const totalItems = await prisma.photo.count({ where });
+        const totalItems = await prisma.apartment.count({ where });
         const totalPages = Math.ceil(totalItems / limit);
 
         if (totalPages === 0) {
@@ -131,24 +126,7 @@ const index = async (req, res) => {
             throw new Error(`La pagina ${page} non esiste.`);
         }
 
-        // Filtro delle foto per lo user
-        let userId;
-
-        if (req.headers.authorization) {
-
-            const token = req.headers.authorization.split(' ')[1];
-            const decoded = jwt.verify(token, process.env.JWT_SECRET);
-            const userEmail = decoded.email;
-            const user = await prisma.user.findUnique({ where: { email: userEmail } });
-            userId = user.id;
-        }
-
-        // Filtro dello user
-        if (user === 'true' && userId) {
-            where.userId = userId
-        }
-
-        const photos = await prisma.photo.findMany({
+        const apartments = await prisma.apartment.findMany({
             where,
             orderBy: [
                 {
@@ -156,17 +134,11 @@ const index = async (req, res) => {
                 }
             ],
             include: {
-                categories: {
+                services: {
                     select: {
                         id: true,
-                        name: true,
-                        color: true
-                    }
-                },
-                user: {
-                    select: {
-                        id: true,
-                        name: true
+                        label: true,
+                        icon: true
                     }
                 }
             },
@@ -174,7 +146,7 @@ const index = async (req, res) => {
             skip: parseInt(offset)
         });
         res.json({
-            data: photos,
+            data: apartments,
             page,
             totalItems,
             totalPages
