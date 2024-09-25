@@ -43,7 +43,10 @@ const Home = () => {
 
             <section id="apartments">
                 <div className="container">
-                    <div className="row">
+                    <h2>Our Homestay</h2>
+                    <h4>We have the best rooms for you</h4>
+
+                    <div className="row gap-3">
                         {apartments.length === 0 ? (
                             <div className="col-12">
 
@@ -54,7 +57,7 @@ const Home = () => {
                         ) : (
                             apartments.map(({ id, title, slug, cover, description, visible, beds, sqm, guests }) => (
                                 visible === true &&
-                                <div key={id} className="col-6">
+                                <div key={id} className="col-4">
 
                                     {/* Tasto show del singolo appartamento */}
                                     <Link to={`/apartments/${slug}`} style={{ textDecoration: 'none', color: 'black' }}>
