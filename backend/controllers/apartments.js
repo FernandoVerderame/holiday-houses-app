@@ -26,7 +26,7 @@ const port = PORT || 3000;
 // Store
 const store = async (req, res) => {
 
-    const { title, description, rooms, beds, bathrooms, sqm, address, services } = req.body;
+    const { title, description, rooms, beds, bathrooms, sqm, guests, address, services } = req.body;
 
     // Recupero l'ID dell'utente tramite il token
     const token = req.headers.authorization.split(" ")[1];
@@ -72,6 +72,7 @@ const store = async (req, res) => {
             beds: parseInt(beds),
             bathrooms: parseInt(bathrooms),
             sqm: parseInt(sqm),
+            guests: parseInt(guests),
             address,
             latitude: parseFloat(latitude),
             longitude: parseFloat(longitude),

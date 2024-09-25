@@ -52,7 +52,7 @@ const Home = () => {
 
                             </div>
                         ) : (
-                            apartments.map(({ id, title, slug, cover, description, visible, beds, sqm }) => (
+                            apartments.map(({ id, title, slug, cover, description, visible, beds, sqm, guests }) => (
                                 visible === true &&
                                 <div key={id} className="col-6">
 
@@ -67,6 +67,7 @@ const Home = () => {
                                             description={description}
                                             beds={beds}
                                             sqm={sqm}
+                                            guests={guests}
                                         />
 
                                     </Link>

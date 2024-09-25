@@ -24,6 +24,7 @@ model Apartment {
   beds        Int
   bathrooms   Int
   sqm         Int
+  guest       Int
   address     String
   latitude    Decimal   @db.Decimal(9, 6)
   longitude   Decimal   @db.Decimal(9, 6)
