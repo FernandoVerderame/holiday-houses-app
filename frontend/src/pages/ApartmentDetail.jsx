@@ -38,6 +38,11 @@ const ApartmentDetail = () => {
                 cover={apartment?.cover}
             />
 
+            {/* Galleria immagini*/}
+            <section id="apartment-gallery" style={{ height: '500px', backgroundColor: 'lightgray' }}>
+
+            </section>
+
             {/* Info appartamento */}
             <ApartmentInfo
                 title={apartment?.title}
