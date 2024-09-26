@@ -1,6 +1,8 @@
 import axios from "../utils/axiosClient.js";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ApartmentInfo from "../components/Apartments/ApartmentInfo/ApartmentInfo.jsx";
+import ApartmentJumbo from "../components/Apartments/ApartmentJumbo/ApartmentJumbo.jsx";
 
 const ApartmentDetail = () => {
 
@@ -30,6 +32,23 @@ const ApartmentDetail = () => {
 
     return (
         <>
+            {/* Jumbotron Appartamento */}
+            <ApartmentJumbo
+                title={apartment?.title}
+                cover={apartment?.cover}
+            />
+
+            {/* Info appartamento */}
+            <ApartmentInfo
+                title={apartment?.title}
+                description={apartment?.description}
+                rooms={apartment?.rooms}
+                beds={apartment?.beds}
+                bathrooms={apartment?.bathrooms}
+                sqm={apartment?.sqm}
+                guests={apartment?.guests}
+                services={apartment?.services}
+            />
 
         </>
     );

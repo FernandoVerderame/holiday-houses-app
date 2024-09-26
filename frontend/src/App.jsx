@@ -22,12 +22,7 @@ function App() {
             <Route index element={<HomePage />} />
 
             {/* Appartamenti */}
-            <Route path="apartments">
-              {/* Show */}
-              <Route path=":slug" >
-                <Route index element={<ApartmentDetail />} />
-              </ Route>
-            </Route>
+            <Route path="apartments/:slug" element={<ApartmentDetail />} />
 
           </Route>
 
