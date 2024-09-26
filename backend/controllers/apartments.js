@@ -162,29 +162,23 @@ const index = async (req, res) => {
 const show = async (req, res) => {
     try {
         const { slug } = req.params;
-        const photo = await prisma.photo.findUnique({
+        const apartment = await prisma.apartment.findUnique({
             where: { slug },
             include: {
-                categories: {
+                services: {
                     select: {
                         id: true,
-                        name: true,
-                        color: true
-                    }
-                },
-                user: {
-                    select: {
-                        id: true,
-                        name: true
+                        label: true,
+                        icon: true
                     }
                 }
             }
         });
 
-        if (photo) {
-            res.json(photo);
+        if (apartment) {
+            res.json(apartment);
         } else {
-            throw new Error(`Foto con slug: ${slug} non trovata.`, 404);
+            throw new Error(`Appartamento con slug: ${slug} non trovato.`, 404);
         }
 
     } catch (err) {
