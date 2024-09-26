@@ -2,8 +2,21 @@ import footerStyle from './Footer.module.scss';
 import { FaFacebook as Facebook } from "react-icons/fa";
 import { FaLinkedin as Linkedin } from "react-icons/fa";
 import logo from '../../assets/images/logo.png';
+import { NavLink, useLocation } from 'react-router-dom';
+import { scroller } from 'react-scroll';
 
 const Footer = () => {
+
+    const location = useLocation(); // Ottieni la location corrente
+
+    // Funzione per scrollare alla sezione "apartments" se sei sulla home
+    const handleScrollToSection = () => {
+        scroller.scrollTo('apartments', {
+            smooth: true,
+            duration: 500
+        });
+    };
+
     return (
         <>
             <footer>
@@ -21,10 +34,35 @@ const Footer = () => {
                             <h3 className={`mb-4 ${footerStyle.links}`}>Links</h3>
 
                             <ul className='d-flex flex-column gap-2'>
-                                <li><a href="" className="link-underline-light text-white">Home</a></li>
-                                <li><a href="" className="link-underline-light text-white">About Us</a></li>
-                                <li><a href="" className="link-underline-light text-white">Apartments</a></li>
-                                <li><a href="" className="link-underline-light text-white">Contact Us</a></li>
+                                <li className="nav-item">
+                                    <NavLink
+                                        className="link-underline-light text-white"
+                                        to={'/'}>Home</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink
+                                        className="link-underline-light text-white"
+                                        to={'/about-us'}>About Us</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink
+                                        className="link-underline-light text-white"
+                                        to="/#apartments" // Naviga verso la home con l'anchor
+                                        onClick={(e) => {
+                                            if (location.pathname === '/') { // Se sei già sulla home
+                                                e.preventDefault(); // Impedisci la navigazione
+                                                handleScrollToSection(); // Esegui lo scroll
+                                            }
+                                        }}
+                                    >
+                                        Apartments
+                                    </NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink
+                                        className="link-underline-light text-white"
+                                        to={'/contact-us'}>Contact Us</NavLink>
+                                </li>
                             </ul>
                         </div>
                         <div className='col-4'>

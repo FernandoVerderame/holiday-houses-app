@@ -1,13 +1,24 @@
 import axios from "../utils/axiosClient.js";
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar/Navbar.jsx";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import ApartmentCard from "../components/Apartments/ApartmentCard/ApartmentCard.jsx";
 import { PiPanorama as Panorama } from "react-icons/pi";
 import { IoDiamondOutline as Diamond } from "react-icons/io5";
 import { GiReceiveMoney as Investment } from "react-icons/gi";
+import { scroller } from "react-scroll";
 
 const Home = () => {
+
+    const location = useLocation(); // Ottieni la location corrente
+
+    // Funzione per scrollare alla sezione "apartments" se sei sulla home
+    const handleScrollToSection = () => {
+        scroller.scrollTo('apartments', {
+            smooth: true,
+            duration: 500
+        });
+    };
 
     // useState degli appartamenti
     const [apartments, setApartments] = useState([]);
@@ -38,14 +49,24 @@ const Home = () => {
 
                         <div className="d-flex gap-3">
                             <div className="button about" role="button">About Us</div>
-                            <div className="button apartments" role="button">See Apartments</div>
+                            <NavLink
+                                className="button apartments"
+                                to="/#apartments" // Naviga verso la home con l'anchor
+                                onClick={(e) => {
+                                    if (location.pathname === '/') { // Se sei già sulla home
+                                        e.preventDefault(); // Impedisci la navigazione
+                                        handleScrollToSection(); // Esegui lo scroll
+                                    }
+                                }}
+                            >See Apartments
+                            </NavLink>
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Perchè scegliere noi */}
-            <section id="choose-us">
+            < section id="choose-us" >
                 <div className="container">
                     <h2>Why Choose Us</h2>
                     <h4>Why should you choose our apartment?</h4>
@@ -80,10 +101,10 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Sezione appartamenti */}
-            <section id="apartments">
+            < section id="apartments" >
                 <div className="container">
                     <h2>Our Homestay</h2>
                     <h4>We have the best rooms for you</h4>
@@ -121,7 +142,7 @@ const Home = () => {
                         )}
                     </div>
                 </div>
-            </section>
+            </section >
 
         </>
     );

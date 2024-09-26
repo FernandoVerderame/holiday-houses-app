@@ -37,7 +37,7 @@ const Navbar = () => {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) => `nav-link text-white p-0 ${isActive ? navbarStyle.active : ''}`}
-                                    to={'/photos'}>About Us</NavLink>
+                                    to={'/about-us'}>About Us</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink
@@ -56,7 +56,7 @@ const Navbar = () => {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) => `nav-link text-white p-0 ${isActive ? navbarStyle.active : ''}`}
-                                    to={'/categories'}>Contact Us</NavLink>
+                                    to={'/contact-us'}>Contact Us</NavLink>
                             </li>
                         </ul>
                     </div>
