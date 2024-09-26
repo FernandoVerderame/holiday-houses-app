@@ -10,9 +10,9 @@ const validationSlug = {
         in: ["params"],
         custom: {
             options: async (value) => {
-                const slug = await prisma.photo.findUnique({ where: { slug: value } });
+                const slug = await prisma.apartment.findUnique({ where: { slug: value } });
 
-                if (!slug) throw new Error(`Non esiste una foto con slug: ${value}!`);
+                if (!slug) throw new Error(`Non esiste un appartamento con slug: ${value}!`);
 
                 return true;
             }
