@@ -44,16 +44,19 @@ const ApartmentDetail = () => {
             </section>
 
             {/* Info appartamento */}
-            <ApartmentInfo
-                title={apartment?.title}
-                description={apartment?.description}
-                rooms={apartment?.rooms}
-                beds={apartment?.beds}
-                bathrooms={apartment?.bathrooms}
-                sqm={apartment?.sqm}
-                guests={apartment?.guests}
-                services={apartment?.services}
-            />
+            <section id='apartment-info' className="py-5">
+                <ApartmentInfo
+                    title={apartment?.title}
+                    description={apartment?.description}
+                    rooms={apartment?.rooms}
+                    beds={apartment?.beds}
+                    bathrooms={apartment?.bathrooms}
+                    sqm={apartment?.sqm}
+                    guests={apartment?.guests}
+                    services={apartment?.services}
+                />
+            </section>
+
 
         </>
     );
