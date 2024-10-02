@@ -59,6 +59,29 @@ const ApartmentInfo = ({ title, description, rooms, beds, bathrooms, sqm, guests
                         {activeSection === 'description' && (
                             <div className={apartmentInfoStyle.description}>
                                 {description ? description : 'No description available.'}
+
+                                {/* Servizi */}
+                                {services?.length > 0 ? (
+                                    <div>
+                                        <h4 className={apartmentInfoStyle.services}>Services</h4>
+                                        <ul>
+                                            {services.map((service, i) => {
+                                                // Ottiengo l'icona dal mapping delle icone
+                                                const IconComponent = iconMap[service.icon];
+                                                return (
+                                                    <li key={`service-${i}`} className="d-flex align-items-center mb-2 fw-semibold text-black">
+                                                        {/* Renderizza l'icona dinamicamente se esiste */}
+                                                        {IconComponent && <IconComponent className="me-3 fs-4 my-1" />}
+                                                        {service.label}
+                                                    </li>
+                                                );
+                                            })}
+                                        </ul>
+                                    </div>
+                                ) : (
+                                    // Nel caso non ci fossero servizi
+                                    <p className='mt-4'>No services</p>
+                                )}
                             </div>
                         )}
 
@@ -73,29 +96,6 @@ const ApartmentInfo = ({ title, description, rooms, beds, bathrooms, sqm, guests
                                 <h4>Reviews</h4>
                                 <p>User reviews will go here.</p>
                             </div>
-                        )}
-
-                        {/* Servizi */}
-                        {services?.length > 0 ? (
-                            <div>
-                                <h4 className={apartmentInfoStyle.services}>Services</h4>
-                                <ul>
-                                    {services.map((service, i) => {
-                                        // Ottiengo l'icona dal mapping delle icone
-                                        const IconComponent = iconMap[service.icon];
-                                        return (
-                                            <li key={`service-${i}`} className="d-flex align-items-center mb-2 fw-semibold">
-                                                {/* Renderizza l'icona dinamicamente se esiste */}
-                                                {IconComponent && <IconComponent className="me-3 fs-4 my-1" />}
-                                                {service.label}
-                                            </li>
-                                        );
-                                    })}
-                                </ul>
-                            </div>
-                        ) : (
-                            // Nel caso non ci fossero servizi
-                            <p className='mt-4'>No services</p>
                         )}
                     </div>
                     <div className='col-4'>
