@@ -24,6 +24,19 @@
     line-height: 25px;
 }
 
+.payment {
+    display: flex;
+
+    img {
+        height: 60px;
+        width: auto;
+    }
+
+    .mastercard {
+        padding: 10px 0;
+    }
+}
+
 .services {
     font-size: 22px;
     font-weight: 600;

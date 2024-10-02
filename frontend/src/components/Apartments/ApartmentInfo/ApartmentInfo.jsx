@@ -8,6 +8,7 @@ import { MdOutlinePets as Pets } from "react-icons/md";
 import { FaTv as TV } from "react-icons/fa";
 import { BiSolidWasher as Washer } from "react-icons/bi";
 import { useState } from 'react';
+import ApartmentAdditionalInfo from './ApartmentAdditionalInfo';
 
 // Mappo tra le stringhe del database e i componenti delle icone
 const iconMap = {
@@ -63,8 +64,7 @@ const ApartmentInfo = ({ title, description, rooms, beds, bathrooms, sqm, guests
 
                         {activeSection === 'additional' && (
                             <div className={apartmentInfoStyle.additional}>
-                                <h4>Additional Information</h4>
-                                <p>Extra info about the apartment.</p>
+                                <ApartmentAdditionalInfo />
                             </div>
                         )}
 
@@ -105,11 +105,11 @@ const ApartmentInfo = ({ title, description, rooms, beds, bathrooms, sqm, guests
                             <div className={`button ${apartmentInfoStyle.btnCard}`} role='button'>Contact Us</div>
 
                             <ul>
-                                <li><span>Guests:</span>{guests}</li>
-                                <li><span>Rooms:</span>{rooms}</li>
-                                <li><span>Beds:</span>{beds}</li>
-                                <li><span>Bathrooms:</span>{bathrooms}</li>
-                                <li><span>Sqm:</span>{sqm}m<sup>2</sup></li>
+                                <li><span>Guests :</span>{guests}</li>
+                                <li><span>Rooms :</span>{rooms}</li>
+                                <li><span>Beds :</span>{beds}</li>
+                                <li><span>Bathrooms :</span>{bathrooms}</li>
+                                <li><span>Sqm :</span>{sqm}m<sup>2</sup></li>
                             </ul>
                         </div>
                     </div>
