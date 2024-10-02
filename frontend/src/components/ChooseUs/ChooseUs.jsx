@@ -9,7 +9,7 @@ const ChooseUs = () => {
                 <div className="col-4">
                     <div className="card">
                         <div className="icon">
-                            <Panorama className=" fs-1" />
+                            <Panorama className="fs-1" />
                         </div>
                         <h5>Vision Panorama</h5>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium similique dolorem neque accusantium animi provident, aperiam quibusdam temporibus.</p>
