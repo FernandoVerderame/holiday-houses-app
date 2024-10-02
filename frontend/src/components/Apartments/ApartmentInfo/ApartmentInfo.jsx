@@ -16,7 +16,6 @@ const iconMap = {
     Parking: Parking,
     AirConditioning: AirConditioning,
     Pets: Pets,
-    TV: TV,
     Washer: Washer
 };
 

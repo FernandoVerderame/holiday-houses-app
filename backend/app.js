@@ -9,6 +9,8 @@ const servicesRouter = require("./routers/services.js");
 
 const messagesRouter = require("./routers/messages.js");
 
+const imagesRouter = require("./routers/images.js");
+
 const authRouter = require("./routers/auth.js");
 
 // Importo i middlewares
@@ -46,6 +48,9 @@ app.use('/services', servicesRouter);
 
 // Router dei messaggi
 app.use('/messages', messagesRouter);
+
+// Router delle immagini
+app.use('/images', imagesRouter);
 
 // notFound
 app.use(notFound);
