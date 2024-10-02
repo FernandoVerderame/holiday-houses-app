@@ -1,5 +1,9 @@
 @import "bootstrap/scss/bootstrap";
 
+html {
+    scroll-behavior: auto;
+}
+
 .container-home {
     width: 1600px;
 }

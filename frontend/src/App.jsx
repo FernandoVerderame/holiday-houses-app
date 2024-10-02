@@ -7,7 +7,6 @@ import { AuthProvider } from "./contexts/AuthContext.jsx";
 import PrivatePage from "./middlewares/PrivatePage.jsx";
 
 function App() {
-
   return (
     <GlobalProvider>
       <AuthProvider>

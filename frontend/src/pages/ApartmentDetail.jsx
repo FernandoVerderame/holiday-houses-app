@@ -12,23 +12,33 @@ const ApartmentDetail = () => {
     // useState del singolo appartamento
     const [apartment, setApartment] = useState(null);
 
+    // Stato per monitorare il caricamento
+    const [loading, setLoading] = useState(true);
+
     // Fecth della singola foto
     const fetchApartment = async () => {
         try {
             const res = await axios.get(`/apartments/${slug}`);
             const newApartment = res.data;
             setApartment(newApartment);
+            setLoading(false); // Fine del caricamento quando l'appartamento è caricato
         } catch (error) {
             console.error("Errore nel recupero dell'appartamento:", error);
+            setLoading(false); // Fine del caricamento anche in caso di errore
         }
     };
 
     useEffect(() => {
         fetchApartment();
+        window.scrollTo(0, 0); // Scroll forzato in cima alla pagina quando il componente viene montato
         return () => {
             setApartment(null);
         };
     }, [slug]);
+
+    if (loading) {
+        return <div>Loading...</div>; // Mostra un loader durante il caricamento
+    }
 
     return (
         <>
