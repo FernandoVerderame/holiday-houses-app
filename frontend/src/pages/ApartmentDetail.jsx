@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ApartmentInfo from "../components/Apartments/ApartmentInfo/ApartmentInfo.jsx";
 import ApartmentJumbo from "../components/Apartments/ApartmentJumbo/ApartmentJumbo.jsx";
+import ApartmentList from "../components/Apartments/ApartmentList/ApartmentList.jsx";
 
 const ApartmentDetail = () => {
 
@@ -67,6 +68,15 @@ const ApartmentDetail = () => {
                 />
             </section>
 
+            {/* Sezione appartamenti */}
+            <section id="apartments" >
+                <div className="container">
+                    <h2>Other Homestay</h2>
+                    <h4>You may also like other homestay</h4>
+
+                    <ApartmentList />
+                </div>
+            </section>
 
         </>
     );

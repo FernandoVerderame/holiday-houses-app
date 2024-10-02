@@ -25,7 +25,7 @@ const ApartmentAdditionalInfo = () => {
 
                 {/* Animali domestici */}
                 <div className='col-3 fw-semibold text-black'>Pets :</div>
-                <div className='col-9 mb-4'>Pets are allowed</div>
+                <div className='col-9 mb-4'>Pets are allowed.</div>
 
                 {/* Info aggiuntive */}
                 <div className='col-3 fw-semibold text-black'>Additional info :</div>

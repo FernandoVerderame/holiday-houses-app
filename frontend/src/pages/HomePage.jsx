@@ -46,10 +46,10 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-            </section >
+            </section>
 
             {/* Perchè scegliere noi */}
-            < section id="choose-us" >
+            <section id="choose-us" >
                 <div className="container">
                     <h2>Why Choose Us</h2>
                     <h4>Why should you choose our apartment?</h4>
@@ -84,18 +84,17 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-            </section >
+            </section>
 
             {/* Sezione appartamenti */}
-            < section id="apartments" >
+            <section id="apartments" >
                 <div className="container">
                     <h2>Our Homestay</h2>
                     <h4>We have the best rooms for you</h4>
 
-                    <ApartmentList
-                    />
+                    <ApartmentList />
                 </div>
-            </section >
+            </section>
 
         </>
     );
