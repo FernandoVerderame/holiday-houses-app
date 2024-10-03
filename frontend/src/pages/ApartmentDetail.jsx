@@ -74,7 +74,7 @@ const ApartmentDetail = () => {
             />
 
             {/* Galleria immagini*/}
-            <section id="apartment-gallery" style={{ height: '500px', backgroundColor: 'lightgray' }}>
+            <section id="apartment-gallery">
                 <ApartmentGallery
                     filteredImages={filteredImages}
                 />

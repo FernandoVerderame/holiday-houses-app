@@ -1,24 +1,54 @@
+import React, { useEffect } from 'react';
 import apartmentGalleryStyle from './ApartmentGallery.module.scss';
 
 const ApartmentGallery = ({ filteredImages }) => {
+    useEffect(() => {
+        // Inizializza Swiper
+        const swiper = new Swiper('.swiper', {
+            slidesPerView: 3,
+            spaceBetween: 15,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
+
+        return () => {
+            swiper.destroy();
+        };
+    }, []);
+
     return (
         <>
-            <div className="row g-3">
-                {filteredImages?.length === 0 ? (
-                    <div className="col-12">
-
-                        {/* Nel caso non ci appartamenti */}
-                        <p className="text-center text-white h3">Gallery images not found!</p>
-
+            {filteredImages?.length === 0 ? (
+                <div className="col-12">
+                    <p className="text-center text-white h3">Gallery images not found!</p>
+                </div>
+            ) : (
+                <div className={`${apartmentGalleryStyle.gallery} swiper`}>
+                    <div className="swiper-wrapper">
+                        {filteredImages.map(({ id, url }) => (
+                            <div key={id} className="swiper-slide">
+                                <div className={apartmentGalleryStyle.thumb}>
+                                    <img
+                                        src={url ? `http://${url}` : "https://placehold.co/600x400"}
+                                        alt={`Image-${id}`}
+                                    />
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                ) : (
-                    filteredImages.map(({ id, url }) => (
-                        <div key={id} className="col-4">
-                            <img src={url ? `http://${url}` : "https://placehold.co/600x400"} alt={`Image-${id}`} />
-                        </div>
-                    ))
-                )}
-            </div>
+
+                    <div className="swiper-button-next"></div>
+                    <div className="swiper-button-prev"></div>
+                    <div className="swiper-pagination"></div>
+                </div>
+            )}
         </>
     );
 };

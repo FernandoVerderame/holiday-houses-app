@@ -39,7 +39,6 @@ const store = async (req, res, next) => {
         }
         errorHandler(err, req, res);
     }
-
 }
 
 // Index
