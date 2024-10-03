@@ -44,9 +44,9 @@ const ApartmentGallery = ({ filteredImages }) => {
                         ))}
                     </div>
 
-                    <div className="swiper-button-next"></div>
-                    <div className="swiper-button-prev"></div>
-                    <div className="swiper-pagination"></div>
+                    <div className={`swiper-button-next ${apartmentGalleryStyle.next}`}></div>
+                    <div className={`swiper-button-prev ${apartmentGalleryStyle.prev}`}></div>
+                    <div className={`swiper-pagination ${apartmentGalleryStyle.pagination}`}></div>
                 </div>
             )}
         </>
