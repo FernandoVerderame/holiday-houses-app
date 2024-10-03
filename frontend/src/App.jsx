@@ -5,6 +5,7 @@ import ApartmentDetail from "./pages/ApartmentDetail.jsx";
 import { GlobalProvider } from "./contexts/GlobalContext.jsx";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import PrivatePage from "./middlewares/PrivatePage.jsx";
+import ContactUs from "./pages/ContactUs.jsx";
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
 
             {/* Appartamenti */}
             <Route path="apartments/:slug" element={<ApartmentDetail />} />
+
+            {/* Contattaci */}
+            <Route path="/contact-us" element={<ContactUs />} />
 
           </Route>
 
