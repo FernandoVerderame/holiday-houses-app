@@ -32,7 +32,7 @@ const ApartmentGallery = ({ filteredImages }) => {
             ) : (
                 <div className={`${apartmentGalleryStyle.gallery} swiper`}>
                     <div className="swiper-wrapper">
-                        {filteredImages.map(({ id, url }) => (
+                        {filteredImages?.map(({ id, url }) => (
                             <div key={id} className="swiper-slide">
                                 <div className={apartmentGalleryStyle.thumb}>
                                     <img

@@ -6,30 +6,35 @@ import { GlobalProvider } from "./contexts/GlobalContext.jsx";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import PrivatePage from "./middlewares/PrivatePage.jsx";
 import ContactUs from "./pages/ContactUs.jsx";
+import ScrollToTop from './components/ScrollToTop/ScrollToTop.jsx';
 
 function App() {
   return (
     <GlobalProvider>
       <AuthProvider>
-        <Routes>
+        <ScrollToTop>
 
-          {/* Rotte pubbliche */}
+          <Routes>
 
-          {/* Default Layout */}
-          <Route path="/" element={<DefaultLayout />}>
+            {/* Rotte pubbliche */}
 
-            {/* HomePage */}
-            <Route index element={<HomePage />} />
+            {/* Default Layout */}
+            <Route path="/" element={<DefaultLayout />}>
 
-            {/* Appartamenti */}
-            <Route path="apartments/:slug" element={<ApartmentDetail />} />
+              {/* HomePage */}
+              <Route index element={<HomePage />} />
 
-            {/* Contattaci */}
-            <Route path="/contact-us" element={<ContactUs />} />
+              {/* Appartamenti */}
+              <Route path="apartments/:slug" element={<ApartmentDetail />} />
 
-          </Route>
+              {/* Contattaci */}
+              <Route path="/contact-us" element={<ContactUs />} />
 
-        </Routes>
+            </Route>
+
+          </Routes>
+
+        </ScrollToTop>
       </AuthProvider>
     </GlobalProvider>
   );
