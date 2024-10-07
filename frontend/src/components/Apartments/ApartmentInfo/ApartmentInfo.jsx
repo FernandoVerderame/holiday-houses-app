@@ -5,10 +5,10 @@ import {
     FaSquareParking as Parking
 } from "react-icons/fa6";
 import { MdOutlinePets as Pets } from "react-icons/md";
-import { FaTv as TV } from "react-icons/fa";
 import { BiSolidWasher as Washer } from "react-icons/bi";
 import { useState } from 'react';
 import ApartmentAdditionalInfo from './ApartmentAdditionalInfo';
+import { NavLink } from 'react-router-dom';
 
 // Mappo tra le stringhe del database e i componenti delle icone
 const iconMap = {
@@ -101,7 +101,9 @@ const ApartmentInfo = ({ title, description, rooms, beds, bathrooms, sqm, guests
                         <div className={apartmentInfoStyle.cardInfo}>
                             <h3>{title}</h3>
 
-                            <div className={`button ${apartmentInfoStyle.btnCard}`} role='button'>Contact Us</div>
+                            <div className='d-flex justify-content-center'>
+                                <NavLink className={`button ${apartmentInfoStyle.btnCard}`} to={'/contact-us'}>Contact Us</NavLink>
+                            </div>
 
                             <ul>
                                 <li><span>Guests :</span>{guests}</li>
