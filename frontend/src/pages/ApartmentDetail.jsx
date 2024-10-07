@@ -5,31 +5,22 @@ import ApartmentInfo from "../components/Apartments/ApartmentInfo/ApartmentInfo.
 import ApartmentJumbo from "../components/Apartments/ApartmentJumbo/ApartmentJumbo.jsx";
 import ApartmentList from "../components/Apartments/ApartmentList/ApartmentList.jsx";
 import ApartmentGallery from "../components/Apartments/ApartmentGallery/ApartmentGallery.jsx";
+import Loader from "../components/Loader/Loader.jsx";
 
 const ApartmentDetail = () => {
-
-    // Recupero lo slug dai parametri
     const { slug } = useParams();
-
-    // useState del singolo appartamento
     const [apartment, setApartment] = useState(null);
-
-    //useState della gallaria foto
-    const [images, setImages] = useState(null);
-
-    // Stato per monitorare il caricamento
+    const [images, setImages] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // Fecth della singola foto
+    // Fetch della singola foto
     const fetchApartment = async () => {
         try {
             const res = await axios.get(`/apartments/${slug}`);
             const newApartment = res.data;
             setApartment(newApartment);
-            setLoading(false); // Fine del caricamento quando l'appartamento è caricato
         } catch (error) {
             console.error("Errore nel recupero dell'appartamento:", error);
-            setLoading(false); // Fine del caricamento anche in caso di errore
         }
     };
 
@@ -39,49 +30,49 @@ const ApartmentDetail = () => {
             const res = await axios.get(`/images`);
             const newImages = res.data;
             setImages(newImages);
-            setLoading(false); // Fine del caricamento quando l'appartamento è caricato
         } catch (error) {
             console.error("Errore nel recupero della galleria:", error);
-            setLoading(false); // Fine del caricamento anche in caso di errore
         }
-    }
+    };
+
+    // Funzione per verificare il caricamento
+    const checkLoading = () => {
+        if (apartment && images.length > 0) {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
+        setLoading(true);
         fetchApartment();
-        window.scrollTo(0, 0); // Scroll forzato in cima alla pagina quando il componente viene montato
-        return () => {
-            setApartment(null);
-        };
+        fetchImages();
+        window.scrollTo(0, 0);
     }, [slug]);
 
     useEffect(() => {
-        fetchImages();
-    }, []);
+        checkLoading();
+    }, [apartment, images]); // Controlla il caricamento ogni volta che apartment o images cambiano
 
     if (loading) {
-        return <div>Loading...</div>; // Mostra un loader durante il caricamento
+        return <Loader />;
     }
 
     // Filtro delle immagini in base all'apartmentId
-    const filteredImages = images?.filter(image => image.apartmentId === apartment?.id);
+    const filteredImages = images.filter(
+        (image) => image.apartmentId === apartment?.id
+    );
 
     return (
         <>
-            {/* Jumbotron Appartamento */}
-            <ApartmentJumbo
-                title={apartment?.title}
-                cover={apartment?.cover}
-            />
+            <ApartmentJumbo title={apartment?.title} cover={apartment?.cover} />
 
             {/* Galleria immagini*/}
             <section id="apartment-gallery">
-                <ApartmentGallery
-                    filteredImages={filteredImages}
-                />
+                <ApartmentGallery filteredImages={filteredImages} />
             </section>
 
             {/* Info appartamento */}
-            <section id='apartment-info' className="py-5">
+            <section id="apartment-info" className="py-5">
                 <ApartmentInfo
                     title={apartment?.title}
                     description={apartment?.description}
@@ -95,15 +86,13 @@ const ApartmentDetail = () => {
             </section>
 
             {/* Sezione appartamenti */}
-            <section id="apartments" >
+            <section id="apartments">
                 <div className="container">
                     <h2>Other Homestay</h2>
                     <h4>You may also like other homestay</h4>
-
                     <ApartmentList />
                 </div>
             </section>
-
         </>
     );
 };
