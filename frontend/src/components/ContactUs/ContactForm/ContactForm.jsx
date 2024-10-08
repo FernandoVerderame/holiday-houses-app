@@ -81,7 +81,7 @@ const ContactForm = ({ initialData, onSubmit }) => {
                                 id="phone"
                                 name="phone"
                                 type="phone"
-                                placeholder="Phone"
+                                placeholder="Phone (Add Prefix)"
                                 value={messageData.phone}
                                 onChange={e => changeMessageData('phone', e.target.value)}
                                 className="form-control"
