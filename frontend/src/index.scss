@@ -103,6 +103,10 @@ ul {
     }
 }
 
+#apartment-info {
+    padding: 80px 0;
+}
+
 #choose-us {
     padding: 80px 0;
     background-color: #F5F5F5;
@@ -245,5 +249,17 @@ ul {
         outline: none;
         border: 1px solid #c6a47e;
         box-shadow: 0 0 2px #c6a47e;
+    }
+}
+
+#apartment-map {
+    padding: 80px 0;
+    background-color: #F5F5F5;
+
+    .map {
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid lightgray;
+        box-shadow: 3px 20px 62px -25px #000;
     }
 }

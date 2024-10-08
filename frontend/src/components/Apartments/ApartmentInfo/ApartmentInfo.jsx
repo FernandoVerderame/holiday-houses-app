@@ -26,96 +26,93 @@ const ApartmentInfo = ({ title, description, rooms, beds, bathrooms, sqm, guests
 
     return (
         <>
-            <div className='container'>
-                {/* Nav menù info */}
-                <ul className={apartmentInfoStyle.navInfo}>
-                    <li
-                        className={activeSection === 'description' ? apartmentInfoStyle.active : ''}
-                        onClick={() => setActiveSection('description')}
-                        role='button'
-                    >
-                        Description
-                    </li>
-                    <li
-                        className={activeSection === 'additional' ? apartmentInfoStyle.active : ''}
-                        onClick={() => setActiveSection('additional')}
-                        role='button'
-                    >
-                        Additional
-                    </li>
-                    <li
-                        className={activeSection === 'reviews' ? apartmentInfoStyle.active : ''}
-                        onClick={() => setActiveSection('reviews')}
-                        role='button'
-                    >
-                        Reviews
-                    </li>
-                </ul>
+            {/* Nav menù info */}
+            <ul className={apartmentInfoStyle.navInfo}>
+                <li
+                    className={activeSection === 'description' ? apartmentInfoStyle.active : ''}
+                    onClick={() => setActiveSection('description')}
+                    role='button'
+                >
+                    Description
+                </li>
+                <li
+                    className={activeSection === 'additional' ? apartmentInfoStyle.active : ''}
+                    onClick={() => setActiveSection('additional')}
+                    role='button'
+                >
+                    Additional
+                </li>
+                <li
+                    className={activeSection === 'reviews' ? apartmentInfoStyle.active : ''}
+                    onClick={() => setActiveSection('reviews')}
+                    role='button'
+                >
+                    Reviews
+                </li>
+            </ul>
 
-                {/* Info */}
-                <div className='row g-5'>
-                    <div className='col-8'>
-                        {activeSection === 'description' && (
-                            <div className={apartmentInfoStyle.description}>
-                                {description ? description : 'No description available.'}
+            {/* Info */}
+            <div className='row g-5'>
+                <div className='col-8'>
+                    {activeSection === 'description' && (
+                        <div className={apartmentInfoStyle.description}>
+                            {description ? description : 'No description available.'}
 
-                                {/* Servizi */}
-                                {services?.length > 0 ? (
-                                    <div>
-                                        <h4 className={apartmentInfoStyle.services}>Services</h4>
-                                        <ul>
-                                            {services.map((service, i) => {
-                                                // Ottiengo l'icona dal mapping delle icone
-                                                const IconComponent = iconMap[service.icon];
-                                                return (
-                                                    <li key={`service-${i}`} className="d-flex align-items-center mb-2 fw-semibold text-black">
-                                                        {/* Renderizza l'icona dinamicamente se esiste */}
-                                                        {IconComponent && <IconComponent className="me-3 fs-4 my-1" />}
-                                                        {service.label}
-                                                    </li>
-                                                );
-                                            })}
-                                        </ul>
-                                    </div>
-                                ) : (
-                                    // Nel caso non ci fossero servizi
-                                    <p className='mt-4'>No services</p>
-                                )}
-                            </div>
-                        )}
-
-                        {activeSection === 'additional' && (
-                            <div className={apartmentInfoStyle.additional}>
-                                <ApartmentAdditionalInfo />
-                            </div>
-                        )}
-
-                        {activeSection === 'reviews' && (
-                            <div className={apartmentInfoStyle.reviews}>
-                                <h4>Reviews</h4>
-                                <p>User reviews will go here.</p>
-                            </div>
-                        )}
-                    </div>
-                    <div className='col-4'>
-                        <div className={apartmentInfoStyle.cardInfo}>
-                            <h3>{title}</h3>
-
-                            <div className='d-flex justify-content-center'>
-                                <NavLink className={`button ${apartmentInfoStyle.btnCard}`} to={'/contact-us'}>Contact Us</NavLink>
-                            </div>
-
-                            <ul>
-                                <li><span>Guests :</span>{guests}</li>
-                                <li><span>Rooms :</span>{rooms}</li>
-                                <li><span>Beds :</span>{beds}</li>
-                                <li><span>Bathrooms :</span>{bathrooms}</li>
-                                <li><span>Sqm :</span>{sqm}m<sup>2</sup></li>
-                            </ul>
+                            {/* Servizi */}
+                            {services?.length > 0 ? (
+                                <div>
+                                    <h4 className={apartmentInfoStyle.services}>Services</h4>
+                                    <ul>
+                                        {services.map((service, i) => {
+                                            // Ottiengo l'icona dal mapping delle icone
+                                            const IconComponent = iconMap[service.icon];
+                                            return (
+                                                <li key={`service-${i}`} className="d-flex align-items-center mb-2 fw-semibold text-black">
+                                                    {/* Renderizza l'icona dinamicamente se esiste */}
+                                                    {IconComponent && <IconComponent className="me-3 fs-4 my-1" />}
+                                                    {service.label}
+                                                </li>
+                                            );
+                                        })}
+                                    </ul>
+                                </div>
+                            ) : (
+                                // Nel caso non ci fossero servizi
+                                <p className='mt-4'>No services</p>
+                            )}
                         </div>
+                    )}
+
+                    {activeSection === 'additional' && (
+                        <div className={apartmentInfoStyle.additional}>
+                            <ApartmentAdditionalInfo />
+                        </div>
+                    )}
+
+                    {activeSection === 'reviews' && (
+                        <div className={apartmentInfoStyle.reviews}>
+                            <h4>Reviews</h4>
+                            <p>User reviews will go here.</p>
+                        </div>
+                    )}
+                </div>
+                <div className='col-4'>
+                    <div className={apartmentInfoStyle.cardInfo}>
+                        <h3>{title}</h3>
+
+                        <div className='d-flex justify-content-center'>
+                            <NavLink className={`button ${apartmentInfoStyle.btnCard}`} to={'/contact-us'}>Contact Us</NavLink>
+                        </div>
+
+                        <ul>
+                            <li><span>Guests :</span>{guests}</li>
+                            <li><span>Rooms :</span>{rooms}</li>
+                            <li><span>Beds :</span>{beds}</li>
+                            <li><span>Bathrooms :</span>{bathrooms}</li>
+                            <li><span>Sqm :</span>{sqm}m<sup>2</sup></li>
+                        </ul>
                     </div>
                 </div>
-
             </div>
         </>
     );

@@ -6,6 +6,7 @@ import ApartmentJumbo from "../components/Apartments/ApartmentJumbo/ApartmentJum
 import ApartmentList from "../components/Apartments/ApartmentList/ApartmentList.jsx";
 import ApartmentGallery from "../components/Apartments/ApartmentGallery/ApartmentGallery.jsx";
 import Loader from "../components/Loader/Loader.jsx";
+import ApartmentMap from "../components/Apartments/ApartmentMap/ApartmentMap.jsx";
 
 const ApartmentDetail = () => {
     const { slug } = useParams();
@@ -62,6 +63,14 @@ const ApartmentDetail = () => {
         (image) => image.apartmentId === apartment?.id
     );
 
+    // Assicurati che latitude e longitude siano numeri
+    const lat = parseFloat(apartment.latitude);
+    const lng = parseFloat(apartment.longitude);
+
+    if (isNaN(lat) || isNaN(lng)) {
+        return <div>Coordinate non valide</div>; // Mostra un messaggio se le coordinate non sono valide
+    }
+
     return (
         <>
             <ApartmentJumbo title={apartment?.title} cover={apartment?.cover} />
@@ -72,17 +81,34 @@ const ApartmentDetail = () => {
             </section>
 
             {/* Info appartamento */}
-            <section id="apartment-info" className="py-5">
-                <ApartmentInfo
-                    title={apartment?.title}
-                    description={apartment?.description}
-                    rooms={apartment?.rooms}
-                    beds={apartment?.beds}
-                    bathrooms={apartment?.bathrooms}
-                    sqm={apartment?.sqm}
-                    guests={apartment?.guests}
-                    services={apartment?.services}
-                />
+            <section id="apartment-info">
+                <div className="container">
+                    <ApartmentInfo
+                        title={apartment?.title}
+                        description={apartment?.description}
+                        rooms={apartment?.rooms}
+                        beds={apartment?.beds}
+                        bathrooms={apartment?.bathrooms}
+                        sqm={apartment?.sqm}
+                        guests={apartment?.guests}
+                        services={apartment?.services}
+                    />
+                </div>
+            </section>
+
+            <section id="apartment-map">
+                <div className="container">
+                    {apartment?.latitude && apartment?.longitude ? (
+                        <div className="map">
+                            <ApartmentMap
+                                lat={lat}
+                                lng={lng}
+                            />
+                        </div>
+                    ) : (
+                        <div>Coordinates not available</div>
+                    )}
+                </div>
             </section>
 
             {/* Sezione appartamenti */}
