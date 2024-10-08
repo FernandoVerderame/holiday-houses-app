@@ -262,4 +262,14 @@ ul {
         border: 1px solid lightgray;
         box-shadow: 3px 20px 62px -25px #000;
     }
+
+    .red-overlay {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 0, 0, 0.5);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+    }
 }
