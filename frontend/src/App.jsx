@@ -7,6 +7,7 @@ import { AuthProvider } from "./contexts/AuthContext.jsx";
 import PrivatePage from "./middlewares/PrivatePage.jsx";
 import ContactUs from "./pages/ContactUs.jsx";
 import ScrollToTop from './components/ScrollToTop/ScrollToTop.jsx';
+import NotFound from "./pages/NotFound.jsx";
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
           <Routes>
 
             {/* Rotte pubbliche */}
+            {/* 404 */}
+            <Route path="*" element={<NotFound />} />
 
             {/* Default Layout */}
             <Route path="/" element={<DefaultLayout />}>

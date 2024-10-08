@@ -273,3 +273,33 @@ ul {
         pointer-events: none;
     }
 }
+
+#not-found {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    h1 {
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 50px;
+        letter-spacing: 2px;
+
+        span {
+            color: #c6a47e;
+            font-size: 150px;
+        }
+    }
+
+    p {
+        text-align: center;
+    }
+
+    .button {
+        background-color: #222222;
+        color: white;
+    }
+}
