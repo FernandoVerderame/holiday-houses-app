@@ -1,12 +1,28 @@
 const bodyData = {
+    name: {
+        in: ["body"],
+        notEmpty: {
+            errorMessage: "Name is mandatory!",
+            bail: true
+        },
+        isString: {
+            errorMessage: "Name not valid!",
+            bail: true
+        },
+        isLength: {
+            errorMessage: 'Name must be at least 3 characters!',
+            options: { min: 3 }
+        },
+        trim: true
+    },
     email: {
         in: ["body"],
         notEmpty: {
-            errorMessage: "L'email è obbligatoria!",
+            errorMessage: "Email is mandatory!",
             bail: true
         },
         isEmail: {
-            errorMessage: "Email non valida!",
+            errorMessage: "Email not valid!",
             bail: true
         },
         trim: true
@@ -14,15 +30,15 @@ const bodyData = {
     content: {
         in: ["body"],
         notEmpty: {
-            errorMessage: 'Il content è obbligatorio!',
+            errorMessage: 'Content is mandatory!',
             bail: true
         },
         isString: {
-            errorMessage: 'Il content non può contenere solo numeri!',
+            errorMessage: 'The content cannot contain only numbers!',
             bail: true
         },
         isLength: {
-            errorMessage: 'Il content deve contenere almeno 20 caratteri!',
+            errorMessage: 'The content must contain at least 20 characters!',
             options: { min: 20 }
         },
         trim: true

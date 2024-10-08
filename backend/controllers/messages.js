@@ -12,10 +12,12 @@ const jwt = require("jsonwebtoken");
 // Store
 const store = async (req, res, next) => {
 
-    const { email, content } = req.body;
+    const { name, email, content } = req.body;
 
     const data = {
+        name,
         email,
+        phone: req.body.phone ? req.body.phone : '',
         content,
         userId: 1
     }

@@ -22,7 +22,7 @@ const ContactForm = ({ initialData, onSubmit }) => {
             setMessageData(defaultMessageData);
         } catch (err) {
             const { errors } = err.response.data;
-            const error = new Error(errors ? 'Errore di Invio' : err.response.data);
+            const error = new Error(errors ? 'Submission Error' : err.response.data);
             error.errors = errors;
             setMessageError(error);
         }
