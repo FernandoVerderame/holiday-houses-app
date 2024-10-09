@@ -7,6 +7,22 @@
         margin-bottom: 0;
     }
 
+    .stars {
+        display: flex;
+        gap: 5px;
+
+        .filledStar {
+            font-size: 30px;
+            color: #c6a47e;
+        }
+
+        .emptyStar {
+            font-size: 30px;
+            color: #ccc;
+        }
+    }
+
+
     .description {
         font-size: 20px;
         font-weight: 600;

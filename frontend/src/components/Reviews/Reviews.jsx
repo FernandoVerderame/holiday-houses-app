@@ -42,6 +42,18 @@ const Reviews = () => {
         }
     }, [reviews]);
 
+    const renderStars = (rating) => {
+        const stars = [];
+        for (let i = 1; i <= 5; i++) {
+            stars.push(
+                <span key={i} className={i <= rating ? reviewsStyle.filledStar : reviewsStyle.emptyStar}>
+                    &#9733; {/* Stella piena */}
+                </span>
+            );
+        }
+        return <div className={reviewsStyle.stars}>{stars}</div>;
+    };
+
     return (
         <>
             <div className="row">
@@ -55,9 +67,9 @@ const Reviews = () => {
                             {reviews?.map(({ id, name, country, title, description, rating, visible }) => (
                                 visible === true &&
                                 <div key={id} className="swiper-slide">
-                                    <div className="d-flex justify-content-center gap-3">
+                                    <div className="d-flex justify-content-center align-items-center gap-4">
                                         <h3 className={reviewsStyle.title}>{title}</h3>
-                                        <div className={reviewsStyle.rating}>{rating}</div>
+                                        {renderStars(rating)}
                                     </div>
                                     <p className={reviewsStyle.description}>" {description} "</p>
                                     <div className={reviewsStyle.author}>{name}</div>
