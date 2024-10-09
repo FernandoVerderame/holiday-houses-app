@@ -20,19 +20,22 @@ const iconMap = {
     Washer: Washer
 };
 
-const ApartmentInfo = ({ title, description, rooms, beds, bathrooms, sqm, guests, services }) => {
+const ApartmentInfo = ({ title, description, rooms, beds, bathrooms, sqm, guests, services, apartmentId }) => {
 
     // Stato locale per tenere traccia della sezione attiva
     const [activeSection, setActiveSection] = useState('description');
 
     const [reviews, setReviews] = useState([]);
+    const [reviewCount, setReviewCount] = useState(0);
 
     // Fetch delle recensioni
     const fetchReviews = async () => {
         try {
-            const res = await axios.get(`/reviews`);
+            const res = await axios.get(`/reviews?apartmentId=${apartmentId}`);
             const newReviews = res.data.data;
+            const reviewCount = res.data.reviewCount;
             setReviews(newReviews);
+            setReviewCount(reviewCount);
         } catch (error) {
             console.error("Errore nel recupero delle recensioni:", error);
         }
@@ -40,7 +43,7 @@ const ApartmentInfo = ({ title, description, rooms, beds, bathrooms, sqm, guests
 
     useEffect(() => {
         fetchReviews();
-    }, []);
+    }, [apartmentId]);
 
     const renderStars = (rating) => {
         const stars = [];
@@ -77,7 +80,7 @@ const ApartmentInfo = ({ title, description, rooms, beds, bathrooms, sqm, guests
                     onClick={() => setActiveSection('reviews')}
                     role='button'
                 >
-                    Reviews
+                    Reviews {reviewCount ? `(${reviewCount})` : '(0)'}
                 </li>
             </ul>
 

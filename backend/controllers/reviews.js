@@ -36,17 +36,35 @@ const store = async (req, res, next) => {
 // Index 
 const index = async (req, res, next) => {
     try {
+        const { apartmentId } = req.query;
 
         let reviews;
         let reviewCount;
 
-        reviews = await prisma.review.findMany({
-            orderBy: [
-                { createdAt: 'desc' }
-            ]
-        });
+        if (apartmentId) {
+            reviews = await prisma.review.findMany({
+                where: {
+                    apartmentId: parseInt(apartmentId)
+                },
+                orderBy: [
+                    { createdAt: 'desc' }
+                ]
+            });
 
-        reviewCount = await prisma.review.count();
+            reviewCount = await prisma.review.count({
+                where: {
+                    apartmentId: parseInt(apartmentId)
+                }
+            });
+        } else {
+            reviews = await prisma.review.findMany({
+                orderBy: [
+                    { createdAt: 'desc' }
+                ]
+            });
+
+            reviewCount = await prisma.review.count();
+        }
 
         res.json({
             data: reviews,

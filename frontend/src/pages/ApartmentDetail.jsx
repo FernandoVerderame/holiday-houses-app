@@ -92,6 +92,7 @@ const ApartmentDetail = () => {
                         sqm={apartment?.sqm}
                         guests={apartment?.guests}
                         services={apartment?.services}
+                        apartmentId={apartment?.id}
                     />
                 </div>
             </section>
