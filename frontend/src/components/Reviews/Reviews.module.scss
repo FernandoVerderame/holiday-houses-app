@@ -1,4 +1,5 @@
 .cardReview {
+    margin-bottom: 60px;
 
     .title {
         font-size: 25px;
@@ -29,6 +30,11 @@
 
     .pagination {
         position: static;
-        margin-top: 15px;
     }
+}
+
+.btn {
+    color: white;
+    background-color: #c6a47e;
+    margin-top: 50px;
 }

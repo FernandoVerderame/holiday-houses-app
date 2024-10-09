@@ -1,6 +1,7 @@
 import axios from "../../utils/axiosClient.js";
 import { useEffect, useState, useRef } from "react";
 import reviewsStyle from './Reviews.module.scss';
+import { NavLink } from "react-router-dom";
 
 const Reviews = () => {
     const [reviews, setReviews] = useState([]);
@@ -47,12 +48,13 @@ const Reviews = () => {
                 {reviews?.length === 0 ? (
                     <div className="col-12">
                         <p className="text-center h3">Leave a review!</p>
+                        <NavLink className={`button ${reviewsStyle.btn}`}>Send review</NavLink>
                     </div>
                 ) : (
                     <div className={`card ${reviewsStyle.cardReview} swiper`} ref={swiperRef}>
                         <div className="swiper-wrapper">
                             {reviews?.map(({ id, name, country, title, description, rating }) => (
-                                <div key={id} className="swiper-slide"> {/* Rimosso col-12 */}
+                                <div key={id} className="swiper-slide">
                                     <div className="d-flex justify-content-center gap-3">
                                         <h3 className={reviewsStyle.title}>{title}</h3>
                                         <div className={reviewsStyle.rating}>{rating}</div>
@@ -69,6 +71,10 @@ const Reviews = () => {
                         <div className={`swiper-pagination ${reviewsStyle.pagination}`}></div>
                     </div>
                 )}
+
+                <div className="col-12">
+                    <NavLink className={`button ${reviewsStyle.btn}`}>Send review</NavLink>
+                </div>
             </div>
         </>
     );
