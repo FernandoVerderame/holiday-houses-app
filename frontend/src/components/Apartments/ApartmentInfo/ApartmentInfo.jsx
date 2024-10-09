@@ -6,9 +6,10 @@ import {
 } from "react-icons/fa6";
 import { MdOutlinePets as Pets } from "react-icons/md";
 import { BiSolidWasher as Washer } from "react-icons/bi";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ApartmentAdditionalInfo from './ApartmentAdditionalInfo';
 import { NavLink } from 'react-router-dom';
+import axios from "../../../utils/axiosClient.js";
 
 // Mappo tra le stringhe del database e i componenti delle icone
 const iconMap = {
@@ -23,6 +24,35 @@ const ApartmentInfo = ({ title, description, rooms, beds, bathrooms, sqm, guests
 
     // Stato locale per tenere traccia della sezione attiva
     const [activeSection, setActiveSection] = useState('description');
+
+    const [reviews, setReviews] = useState([]);
+
+    // Fetch delle recensioni
+    const fetchReviews = async () => {
+        try {
+            const res = await axios.get(`/reviews`);
+            const newReviews = res.data.data;
+            setReviews(newReviews);
+        } catch (error) {
+            console.error("Errore nel recupero delle recensioni:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchReviews();
+    }, []);
+
+    const renderStars = (rating) => {
+        const stars = [];
+        for (let i = 1; i <= 5; i++) {
+            stars.push(
+                <span key={i} className={i <= rating ? apartmentInfoStyle.filledStar : apartmentInfoStyle.emptyStar}>
+                    &#9733; {/* Stella piena */}
+                </span>
+            );
+        }
+        return <div className={apartmentInfoStyle.stars}>{stars}</div>;
+    };
 
     return (
         <>
@@ -53,7 +83,7 @@ const ApartmentInfo = ({ title, description, rooms, beds, bathrooms, sqm, guests
 
             {/* Info */}
             <div className='row g-5'>
-                <div className='col-8'>
+                <div className='col-9'>
                     {activeSection === 'description' && (
                         <div className={apartmentInfoStyle.description}>
                             {description ? description : 'No description available.'}
@@ -91,12 +121,28 @@ const ApartmentInfo = ({ title, description, rooms, beds, bathrooms, sqm, guests
 
                     {activeSection === 'reviews' && (
                         <div className={apartmentInfoStyle.reviews}>
-                            <h4>Reviews</h4>
-                            <p>User reviews will go here.</p>
+                            <div className='review'>
+                                {reviews?.length === 0 ? (
+                                    <div className="col-12">
+                                        <p>No reviews yet.</p>
+                                    </div>
+                                ) : (
+                                    reviews?.map(({ id, name, country, description, rating, visible }) => (
+                                        visible === true &&
+                                        <div key={id} className={`card border-0 ${apartmentInfoStyle.cardReview}`}>
+                                            <div className="d-flex align-items-center gap-3 mb-2">
+                                                <h3 className={`fw-semibold ${apartmentInfoStyle.title}`}>{name} - {country}</h3>
+                                                {renderStars(rating)}
+                                            </div>
+                                            <p className={apartmentInfoStyle.description}>{description}</p>
+                                        </div>
+                                    ))
+                                )}
+                            </div>
                         </div>
                     )}
                 </div>
-                <div className='col-4'>
+                <div className='col-3'>
                     <div className={apartmentInfoStyle.cardInfo}>
                         <h3>{title}</h3>
 
