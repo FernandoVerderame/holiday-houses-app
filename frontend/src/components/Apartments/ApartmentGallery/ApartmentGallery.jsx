@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import apartmentGalleryStyle from './ApartmentGallery.module.scss';
 
 const ApartmentGallery = ({ filteredImages }) => {
