@@ -93,6 +93,7 @@ model Review {
   rating      Int        @default(1)
   apartment   Apartment? @relation(fields: [apartmentId], references: [id])
   apartmentId Int?
+  visible     Boolean
   user        User?      @relation(fields: [userId], references: [id])
   userId      Int?
   createdAt   DateTime   @default(now())

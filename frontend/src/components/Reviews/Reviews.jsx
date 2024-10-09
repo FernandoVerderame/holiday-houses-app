@@ -47,13 +47,13 @@ const Reviews = () => {
             <div className="row">
                 {reviews?.length === 0 ? (
                     <div className="col-12">
-                        <p className="text-center h3">Leave a review!</p>
                         <NavLink className={`button ${reviewsStyle.btn}`}>Send review</NavLink>
                     </div>
                 ) : (
                     <div className={`card ${reviewsStyle.cardReview} swiper`} ref={swiperRef}>
                         <div className="swiper-wrapper">
-                            {reviews?.map(({ id, name, country, title, description, rating }) => (
+                            {reviews?.map(({ id, name, country, title, description, rating, visible }) => (
+                                visible === true &&
                                 <div key={id} className="swiper-slide">
                                     <div className="d-flex justify-content-center gap-3">
                                         <h3 className={reviewsStyle.title}>{title}</h3>

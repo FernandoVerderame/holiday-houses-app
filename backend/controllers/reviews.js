@@ -21,6 +21,7 @@ const store = async (req, res, next) => {
         description,
         rating: rating || 1,
         apartmentId: req.body.apartmentId ? req.body.apartmentId : null,
+        visible: false,
         userId: 1
     }
 
