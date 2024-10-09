@@ -1,0 +1,29 @@
+.cardReview {
+
+    .title {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 0;
+    }
+
+    .description {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 15px 0;
+    }
+
+    .author {
+        font-size: 17px;
+        text-transform: uppercase;
+        color: #c6a47e;
+        letter-spacing: 2px;
+        margin-bottom: 0;
+        font-weight: 600;
+    }
+
+    .country {
+        font-size: 13px;
+        color: #909090;
+        font-style: italic;
+    }
+}

@@ -36,49 +36,16 @@ const store = async (req, res, next) => {
 const index = async (req, res, next) => {
     try {
 
-        // Recupero l'ID dell'utente tramite il token
-        const token = req.headers.authorization.split(" ")[1];
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        const userEmail = decoded.email;
-        const user = await prisma.user.findUnique({ where: { email: userEmail } });
-        const userId = user.id;
-
         let reviews;
         let reviewCount;
 
-        if (user.isSuperAdmin) {
+        reviews = await prisma.review.findMany({
+            orderBy: [
+                { createdAt: 'desc' }
+            ]
+        });
 
-            reviews = await prisma.review.findMany({
-                orderBy: [
-                    { createdAt: 'desc' }
-                ], include: {
-                    user: {
-                        select: {
-                            name: true,
-                            email: true
-                        }
-                    }
-                }
-            });
-            reviewCount = await prisma.review.count();
-
-        } else {
-
-            reviews = await prisma.review.findMany({
-                where: { userId },
-                orderBy: [
-                    { createdAt: 'desc' }
-                ], include: {
-                    user: {
-                        select: {
-                            name: true,
-                            email: true
-                        }
-                    }
-                }
-            });
-            reviewCount = await prisma.review.count({ where: { userId } });
-        }
+        reviewCount = await prisma.review.count();
 
         res.json({
             data: reviews,

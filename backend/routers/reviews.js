@@ -30,14 +30,14 @@ const {
 // Rotta store
 router.post('/', store);
 
+// Rotta index
+router.get('/', index);
+
 // ? Rotte Protette
 router.use(authenticateToken);
 
 // ! Rotte Admin
 router.use(adminPermission);
-
-// Rotta index
-router.get('/', index);
 
 // ? Validatore dell'ID
 router.use('/:id', validator(paramID));

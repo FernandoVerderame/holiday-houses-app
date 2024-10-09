@@ -3,6 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { scroller } from "react-scroll";
 import ApartmentList from "../components/Apartments/ApartmentList/ApartmentList.jsx";
 import ChooseUs from "../components/ChooseUs/ChooseUs.jsx";
+import Reviews from "../components/Reviews/Reviews.jsx";
 
 const Home = () => {
 
@@ -63,6 +64,16 @@ const Home = () => {
                     <h4>We have the best rooms for you</h4>
 
                     <ApartmentList />
+                </div>
+            </section>
+
+            {/* Sezione recensioni */}
+            <section id="reviews">
+                <div className="container">
+                    <h2>Testimonials</h2>
+                    <h4>What our happy customers said about us</h4>
+
+                    <Reviews />
                 </div>
             </section>
 
