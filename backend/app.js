@@ -11,6 +11,8 @@ const messagesRouter = require("./routers/messages.js");
 
 const imagesRouter = require("./routers/images.js");
 
+const reviewsRouter = require("./routers/reviews.js")
+
 const authRouter = require("./routers/auth.js");
 
 // Importo i middlewares
@@ -51,6 +53,9 @@ app.use('/messages', messagesRouter);
 
 // Router delle immagini
 app.use('/images', imagesRouter);
+
+// Router delle recensioni
+app.use('/reviews', reviewsRouter);
 
 // notFound
 app.use(notFound);
