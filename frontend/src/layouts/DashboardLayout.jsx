@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import Navbar from "../components/Dashboard/Navbar/Navbar.jsx";
 
 const DashboardLayout = () => {
@@ -7,10 +7,18 @@ const DashboardLayout = () => {
             <header>
                 <Navbar />
             </header>
-            <div className="bottom-content d-flex">
+            <div className="bottom-content bg-gray d-flex">
                 <div className="sidebar">
-                    <ul>
-                        <li>Appartamenti</li>
+                    <ul className="list-group">
+                        <li>
+                            <NavLink
+                                className={({ isActive }) => `nav-link text-white p-0 ${isActive ? 'fw-bold' : ''}`}
+                                to={'/dashboard'}>
+                                Appartamenti
+                            </NavLink>
+                        </li>
+
+
                         <li>Messaggi</li>
                         <li>Recensioni</li>
                     </ul>
@@ -19,7 +27,7 @@ const DashboardLayout = () => {
                     <Outlet />
                 </main>
             </div>
-        </div>
+        </div >
     );
 }
 

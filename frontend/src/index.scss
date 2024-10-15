@@ -4,6 +4,10 @@ html {
     scroll-behavior: auto;
 }
 
+.bg-gray {
+    background-color: rgb(226, 226, 226);
+}
+
 .container-home {
     width: 1600px;
 }
@@ -335,7 +339,6 @@ ul {
 
 .dashboard-wrapper {
     .bottom-content {
-        background-color: goldenrod;
         height: calc(100vh - 60px);
         overflow: auto;
     }
@@ -345,18 +348,32 @@ ul {
         background-color: #051E34;
         flex-basis: 150px;
         flex-shrink: 0;
-        padding: 20px;
+        padding: 30px 20px;
 
         ul {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
         }
     }
 
     main {
-        background-color: #F8F9FA;
         flex-grow: 1;
         overflow: auto;
+    }
+}
+
+#dashboard-apartments {
+    background-color: #1b72e8;
+
+    .table-img {
+        width: 100px;
+        height: 90px;
+    }
+
+    td,
+    th {
+        vertical-align: middle;
+        text-align: start;
     }
 }
