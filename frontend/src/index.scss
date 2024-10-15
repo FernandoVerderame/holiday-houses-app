@@ -332,3 +332,31 @@ ul {
         box-shadow: 3px 20px 62px -25px #000;
     }
 }
+
+.dashboard-wrapper {
+    .bottom-content {
+        background-color: goldenrod;
+        height: calc(100vh - 60px);
+        overflow: auto;
+    }
+
+    .sidebar {
+        color: white;
+        background-color: #051E34;
+        flex-basis: 150px;
+        flex-shrink: 0;
+        padding: 20px;
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+
+    main {
+        background-color: #F8F9FA;
+        flex-grow: 1;
+        overflow: auto;
+    }
+}

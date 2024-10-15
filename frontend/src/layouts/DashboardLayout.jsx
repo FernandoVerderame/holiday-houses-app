@@ -4,10 +4,21 @@ import Navbar from "../components/Dashboard/Navbar/Navbar.jsx";
 const DashboardLayout = () => {
     return (
         <div className="dashboard-wrapper">
-            <Navbar />
-            <main>
-                <Outlet />
-            </main>
+            <header>
+                <Navbar />
+            </header>
+            <div className="bottom-content d-flex">
+                <div className="sidebar">
+                    <ul>
+                        <li>Appartamenti</li>
+                        <li>Messaggi</li>
+                        <li>Recensioni</li>
+                    </ul>
+                </div>
+                <main>
+                    <Outlet />
+                </main>
+            </div>
         </div>
     );
 }
