@@ -1,8 +1,10 @@
 import { Outlet } from "react-router-dom";
+import Navbar from "../components/Dashboard/Navbar/Navbar.jsx";
 
 const DashboardLayout = () => {
     return (
-        <div className="wrapper">
+        <div className="dashboard-wrapper">
+            <Navbar />
             <main>
                 <Outlet />
             </main>

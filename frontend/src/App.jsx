@@ -45,29 +45,24 @@ function App() {
             </Route>
 
             {/* Rotte private */}
-            <Route path="/" element={
+            <Route path="/dashboard" element={
               <PrivatePage>
                 <DashboardLayout />
               </PrivatePage>
             }>
 
-              {/* Appartamenti */}
-              <Route path="dashboard" element={<DashboardLayout />}>
+              {/* Index */}
+              <Route index element={<ApartmentIndex />} />
 
-                {/* Index */}
-                <Route index element={<ApartmentIndex />} />
+              <Route path=":slug" >
+                {/* Show */}
+                <Route index element={<ApartmentShow />} />
+                {/* Edit */}
+                <Route path="edit" element={<ApartmentEdit />} />
+              </ Route>
 
-                <Route path=":slug" >
-                  {/* Show */}
-                  <Route index element={<ApartmentShow />} />
-                  {/* Edit */}
-                  <Route path="edit" element={<ApartmentEdit />} />
-                </ Route>
-
-                {/* Crea */}
-                <Route path="create" element={<ApartmentCreate />} />
-
-              </Route>
+              {/* Crea */}
+              <Route path="create" element={<ApartmentCreate />} />
 
             </Route>
 
