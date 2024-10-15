@@ -17,7 +17,7 @@ const AuthProvider = ({ children }) => {
             const { data: response } = await axios.post('/auth/login', payload);
             setUser(response.data);
             localStorage.setItem('accessToken', response.token);
-            navigate('/');
+            navigate('/dashboard');
         } catch (err) {
             const { errors } = err.response.data;
             const error = new Error(errors ? "Errore di Login" : err.response.data);
