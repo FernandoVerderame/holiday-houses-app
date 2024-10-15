@@ -324,3 +324,11 @@ ul {
         background: none;
     }
 }
+
+#login {
+    height: calc(100vh - 110px);
+
+    .card {
+        box-shadow: 3px 20px 62px -25px #000;
+    }
+}

@@ -8,6 +8,7 @@ import PrivatePage from "./middlewares/PrivatePage.jsx";
 import ContactUs from "./pages/ContactUs.jsx";
 import ScrollToTop from './components/ScrollToTop/ScrollToTop.jsx';
 import NotFound from "./pages/NotFound.jsx";
+import Login from "./pages/Login.jsx";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
             {/* Rotte pubbliche */}
             {/* 404 */}
             <Route path="*" element={<NotFound />} />
+
+            {/* Rotta login */}
+            <Route path="login" element={<Login />} />
 
             {/* Default Layout */}
             <Route path="/" element={<DefaultLayout />}>
@@ -35,11 +39,16 @@ function App() {
 
             </Route>
 
+            {/* Rotte private */}
+            <Route path="/" element={<PrivatePage />}>
+
+            </Route>
+
           </Routes>
 
         </ScrollToTop>
-      </AuthProvider>
-    </GlobalProvider>
+      </AuthProvider >
+    </GlobalProvider >
   );
 }
 
