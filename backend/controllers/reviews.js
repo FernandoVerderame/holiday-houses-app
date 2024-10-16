@@ -48,7 +48,12 @@ const index = async (req, res, next) => {
                 },
                 orderBy: [
                     { createdAt: 'desc' }
-                ]
+                ],
+                include: {
+                    apartment: {
+                        select: { title: true }
+                    }
+                }
             });
 
             reviewCount = await prisma.review.count({
@@ -60,7 +65,12 @@ const index = async (req, res, next) => {
             reviews = await prisma.review.findMany({
                 orderBy: [
                     { createdAt: 'desc' }
-                ]
+                ],
+                include: {
+                    apartment: {
+                        select: { title: true }
+                    }
+                }
             });
 
             reviewCount = await prisma.review.count();
@@ -106,9 +116,30 @@ const destroy = async (req, res, next) => {
     }
 }
 
+// Switch
+const toggle = async (req, res, next) => {
+    const id = parseInt(req.params.id);
+    const { visible } = req.body;  // Recupera i campi da aggiornare
+
+    try {
+        const updatedReview = await prisma.review.update({
+            where: { id },
+            data: { visible }
+        });
+
+        res.status(200).json({
+            message: `Recensione con id ${id} aggiornata con successo.`,
+            data: updatedReview
+        });
+    } catch (err) {
+        errorHandler(err, req, res);
+    }
+}
+
 module.exports = {
     store,
     index,
     show,
-    destroy
+    destroy,
+    toggle
 }

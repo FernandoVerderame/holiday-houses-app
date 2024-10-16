@@ -24,7 +24,8 @@ const {
     store,
     index,
     show,
-    destroy
+    destroy,
+    toggle
 } = require("../controllers/reviews.js");
 
 // Rotta store
@@ -47,5 +48,8 @@ router.get('/:id', show);
 
 // Rotta destroy
 router.delete('/:id', destroy);
+
+// Rotta patch per aggiornare lo stato della recensione
+router.patch('/:id', toggle);
 
 module.exports = router;

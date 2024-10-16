@@ -14,6 +14,7 @@ import ApartmentEdit from "./pages/ApartmentEdit.jsx";
 import ApartmentIndex from "./pages/ApartmentIndex.jsx";
 import ApartmentCreate from "./pages/ApartmentCreate.jsx";
 import Messages from "./pages/Messages.jsx";
+import Reviews from "./pages/Reviews.jsx";
 
 function App() {
   return (
@@ -69,6 +70,12 @@ function App() {
               <Route path="messages">
                 {/* Index */}
                 <Route index element={<Messages />} />
+              </Route>
+
+              {/* Recensioni */}
+              <Route path="reviews">
+                {/* Index */}
+                <Route index element={<Reviews />} />
               </Route>
 
             </Route>
