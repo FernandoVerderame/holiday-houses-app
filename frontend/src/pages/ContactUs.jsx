@@ -2,7 +2,7 @@ import ContactForm from "../components/ContactUs/ContactForm/ContactForm.jsx";
 import ContactUsInfo from "../components/ContactUs/ContactUsInfo.jsx";
 import Navbar from "../components/Navbar/Navbar.jsx";
 import { useState } from "react";
-import axios from "axios";
+import axios from "../utils/axiosClient.js";
 import Alert from "../components/Alert/Alert.jsx";
 
 const ContactUs = () => {
@@ -12,7 +12,7 @@ const ContactUs = () => {
 
     // Chiamata per la creazione del messaggio
     const createMessage = async formData => {
-        const res = await axios.post('http://localhost:3000/messages', formData);
+        const res = await axios.post('/messages', formData);
 
         if (res.status < 400) {
             setAlert({ type: 'success', message: `Message sent successfully!` });

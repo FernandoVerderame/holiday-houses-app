@@ -30,7 +30,7 @@ const ApartmentIndex = () => {
             <section id="dashboard-apartments">
 
                 <div className="container-fluid">
-                    <div className="d-flex justify-content-between align-items-center py-4 px-4">
+                    <div className="d-flex justify-content-between align-items-center p-4">
                         <h1 className="m-0 text-white">Appartamenti</h1>
                         {/* Aggiungi appartamento */}
                         <NavLink className="btn btn-primary border" to={'/dashboard/create'}>
