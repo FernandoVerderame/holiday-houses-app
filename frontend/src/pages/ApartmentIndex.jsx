@@ -89,7 +89,7 @@ const ApartmentIndex = () => {
                                 <div className="mt-4 p-2">
                                     {/* Tabella appartamenti */}
                                     <table className="table table-hover shadow-lg shadow-border">
-                                        <thead>
+                                        <thead className="table-light">
                                             <tr>
                                                 <th scope="col" className="d-none d-lg-table-cell">Anteprima</th>
                                                 <th scope="col">Nome <span className="d-none d-md-inline">Appartamento</span></th>
@@ -102,7 +102,7 @@ const ApartmentIndex = () => {
                                                 <th scope="col"></th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody className="table-group-divider">
                                             {apartments.map(({ id, slug, title, cover, bathrooms, visible, beds, rooms, sqm, guests }) => (
                                                 <tr key={id}>
                                                     {/* Colonna anteprima immagine */}

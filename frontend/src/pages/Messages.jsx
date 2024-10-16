@@ -94,7 +94,7 @@ const Messages = () => {
                                 <div className="mt-4 p-2">
                                     <table className="table table-white table-hover shadow-lg shadow-border">
                                         {/* Tabella messaggi */}
-                                        <thead>
+                                        <thead className="table-light">
                                             <tr>
                                                 <th scope="col">Nome</th>
                                                 <th scope="col">Email</th>
@@ -104,7 +104,7 @@ const Messages = () => {
                                             </tr>
                                         </thead>
 
-                                        <tbody>
+                                        <tbody className="table-group-divider">
                                             {messages.map(({ id, name, email, phone, content, createdAt }) => (
                                                 <tr key={id}>
                                                     <td>{name}</td>

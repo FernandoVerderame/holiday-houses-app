@@ -4,6 +4,7 @@ import DeleteModal from "../components/Modal/Modal.jsx";
 import Alert from "../components/Alert/Alert.jsx";
 import { format } from 'date-fns';
 import { it } from 'date-fns/locale';
+import { FaStar as Star } from "react-icons/fa";
 
 const Reviews = () => {
 
@@ -115,7 +116,7 @@ const Reviews = () => {
                                 <div className="mt-4 p-2">
                                     <table className="table table-white table-hover shadow-lg shadow-border">
                                         {/* Tabella recensioni */}
-                                        <thead>
+                                        <thead className="table-light">
                                             <tr>
                                                 <th scope="col">Nome</th>
                                                 <th scope="col">Paese</th>
@@ -128,7 +129,7 @@ const Reviews = () => {
                                             </tr>
                                         </thead>
 
-                                        <tbody>
+                                        <tbody className="table-group-divider">
                                             {reviews.map(({ id, name, country, title, description, rating, visible, apartment, createdAt }) => (
                                                 <tr key={id}>
                                                     <td>{name}</td>
@@ -139,7 +140,7 @@ const Reviews = () => {
 
                                                     <td>{description}</td>
 
-                                                    <td>{rating}/5</td>
+                                                    <td>{rating}/5<Star className="text-warning star-position" /></td>
 
                                                     <td>
                                                         <div className="form-check form-switch">

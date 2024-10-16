@@ -368,6 +368,11 @@ ul {
 #dashboard-reviews {
     background-color: #1b72e8;
 
+    .star-position {
+        position: relative;
+        bottom: 2px;
+    }
+
     .table-img {
         width: 100px;
         height: 90px;
