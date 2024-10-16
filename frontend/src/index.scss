@@ -363,7 +363,8 @@ ul {
     }
 }
 
-#dashboard-apartments {
+#dashboard-apartments,
+#dashboard-messages {
     background-color: #1b72e8;
 
     .table-img {
@@ -379,7 +380,8 @@ ul {
 }
 
 #create-apartment,
-#edit-apartment {
+#edit-apartment,
+#dashboard-messages {
     .header-main {
         background-color: #1b72e8;
     }

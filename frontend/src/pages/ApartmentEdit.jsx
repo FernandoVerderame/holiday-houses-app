@@ -61,7 +61,7 @@ const ApartmentEdit = () => {
             <section id="edit-apartment">
                 <div className="header-main">
                     <div className="container-fluid">
-                        <div className="p-4 header-main">
+                        <div className="p-4">
                             <h1 className="m-0 text-white">Edita</h1>
                         </div>
                     </div>

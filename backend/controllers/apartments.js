@@ -289,7 +289,7 @@ const destroy = async (req, res) => {
             where: { slug }
         });
 
-        const imageName = apartment.cover.replace(`${HOST}:${PORT}/apartment_covers/`, '');
+        const imageName = apartment.cover.replace(`${HOST}:${port}/apartment_covers/`, '');
 
         if (apartment.cover) deletePic('apartment_covers', imageName);
 

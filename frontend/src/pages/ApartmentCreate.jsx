@@ -29,7 +29,7 @@ const ApartmentCreate = () => {
             <section id="create-apartment">
                 <div className="header-main">
                     <div className="container-fluid">
-                        <div className="p-4 header-main">
+                        <div className="p-4">
                             <h1 className="m-0 text-white">Crea</h1>
                         </div>
                     </div>

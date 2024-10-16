@@ -81,14 +81,14 @@ const ApartmentIndex = () => {
                             <div className="col-12 bg-gray">
 
                                 {/* Nel caso non ci siano appartamenti */}
-                                <p className="text-center text-white h3">Non ci sono appartamenti!</p>
+                                <p className="text-center h3 mt-4">Non ci sono appartamenti!</p>
 
                             </div>
                         ) : (
                             <div className="col-12 bg-gray">
-                                <div className="card mt-4 p-2">
+                                <div className="mt-4 p-2">
                                     {/* Tabella appartamenti */}
-                                    <table className="table table-hover">
+                                    <table className="table table-hover shadow-lg shadow-border">
                                         <thead>
                                             <tr>
                                                 <th scope="col" className="d-none d-lg-table-cell">Anteprima</th>

@@ -17,9 +17,13 @@ const DashboardLayout = () => {
                                 Appartamenti
                             </NavLink>
                         </li>
-
-
-                        <li>Messaggi</li>
+                        <li>
+                            <NavLink
+                                className={({ isActive }) => `nav-link text-white p-0 ${isActive ? 'fw-bold' : ''}`}
+                                to={'/dashboard/messages'}>
+                                Messaggi
+                            </NavLink>
+                        </li>
                         <li>Recensioni</li>
                     </ul>
                 </div>

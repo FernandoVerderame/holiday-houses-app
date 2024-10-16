@@ -13,6 +13,7 @@ import DashboardLayout from "./layouts/DashboardLayout.jsx";
 import ApartmentEdit from "./pages/ApartmentEdit.jsx";
 import ApartmentIndex from "./pages/ApartmentIndex.jsx";
 import ApartmentCreate from "./pages/ApartmentCreate.jsx";
+import Messages from "./pages/Messages.jsx";
 
 function App() {
   return (
@@ -62,6 +63,12 @@ function App() {
 
                 {/* Crea */}
                 <Route path="create" element={<ApartmentCreate />} />
+              </Route>
+
+              {/* Messaggi */}
+              <Route path="messages">
+                {/* Index */}
+                <Route index element={<Messages />} />
               </Route>
 
             </Route>
