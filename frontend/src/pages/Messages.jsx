@@ -96,11 +96,10 @@ const Messages = () => {
                                         {/* Tabella messaggi */}
                                         <thead>
                                             <tr>
-                                                <th scope="col">ID</th>
                                                 <th scope="col">Nome</th>
                                                 <th scope="col">Email</th>
-                                                <th scope="col">Telefono</th>
-                                                <th scope="col" className="d-none d-lg-table-cell">Contenuto</th>
+                                                <th scope="col" className="d-none d-lg-table-cell">Telefono</th>
+                                                <th scope="col">Contenuto</th>
                                                 <th scope="col" className="d-none d-lg-table-cell">Data</th>
                                             </tr>
                                         </thead>
@@ -108,15 +107,13 @@ const Messages = () => {
                                         <tbody>
                                             {messages.map(({ id, name, email, phone, content, createdAt }) => (
                                                 <tr key={id}>
-                                                    <th>{id}</th>
-
                                                     <td>{name}</td>
 
                                                     <td>{email}</td>
 
-                                                    <td>{phone}</td>
+                                                    <td className="d-none d-lg-table-cell">{phone}</td>
 
-                                                    <td className="d-none d-lg-table-cell">{content}</td>
+                                                    <td>{content}</td>
 
                                                     <td className="d-none d-lg-table-cell">{formatDate(createdAt)}</td>
                                                 </tr>

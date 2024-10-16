@@ -92,7 +92,6 @@ const ApartmentIndex = () => {
                                         <thead>
                                             <tr>
                                                 <th scope="col" className="d-none d-lg-table-cell">Anteprima</th>
-                                                <th scope="col">ID</th>
                                                 <th scope="col">Nome <span className="d-none d-md-inline">Appartamento</span></th>
                                                 <th scope="col">Pubblicato</th>
                                                 <th scope="col">Stanze</th>
@@ -110,9 +109,6 @@ const ApartmentIndex = () => {
                                                     <td className="d-none d-lg-table-cell">
                                                         <img src={cover ? `http://${cover}` : "https://placehold.co/600x400"} alt={title} className="img-fluid table-img rounded-1" />
                                                     </td>
-
-                                                    {/* Colonna ID */}
-                                                    <td>{id}</td>
 
                                                     {/* Nome appartamento con link */}
                                                     <td>{title}</td>
