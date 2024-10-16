@@ -33,7 +33,7 @@ const ApartmentIndex = () => {
                     <div className="d-flex justify-content-between align-items-center p-4">
                         <h1 className="m-0 text-white">Appartamenti</h1>
                         {/* Aggiungi appartamento */}
-                        <NavLink className="btn btn-primary border" to={'/dashboard/create'}>
+                        <NavLink className="btn btn-primary border" to={'/dashboard/apartments/create'}>
                             <AddApartment className="me-2" />
                             Appartamento
                         </NavLink>
@@ -100,7 +100,7 @@ const ApartmentIndex = () => {
 
                                                     {/* Azioni */}
                                                     <td className="text-end">
-                                                        <NavLink className="btn btn-warning text-white me-2" to={`/dashboard/${slug}/edit`}><Edit /></NavLink>
+                                                        <NavLink className="btn btn-warning text-white me-2" to={`/dashboard/apartments/${slug}/edit`}><Edit /></NavLink>
                                                         <button className="btn btn-danger"><Delete /></button>
                                                     </td>
                                                 </tr>

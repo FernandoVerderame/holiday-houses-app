@@ -18,7 +18,7 @@ const ApartmentCreate = () => {
 
         if (res.status < 400) {
             // Redirect all'appartamento appena creato con messaggio di successo come stato
-            navigate(`/dashboard`, {
+            navigate(`/dashboard/apartments`, {
                 state: { alert: { type: 'success', message: 'Appartamento creato con successo!' } }
             });
         }

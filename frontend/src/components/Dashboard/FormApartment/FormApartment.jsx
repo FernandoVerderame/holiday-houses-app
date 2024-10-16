@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useGlobal } from '../../../contexts/GlobalContext.jsx';
 import { FaRegSave as Save } from "react-icons/fa";
 
@@ -23,6 +23,12 @@ const FormApartment = ({ initialData, onSubmit }) => {
 
     // useState del singolo nuovo Post
     const [apartmentData, setApartmentData] = useState(defaultApartmentData);
+
+    useEffect(() => {
+        if (initialData) {
+            setApartmentData(initialData);
+        }
+    }, [initialData]);
 
     // Campo delle categorie
     const handleField = (name, value) => {

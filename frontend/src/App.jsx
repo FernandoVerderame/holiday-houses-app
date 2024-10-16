@@ -10,7 +10,6 @@ import ScrollToTop from './components/ScrollToTop/ScrollToTop.jsx';
 import NotFound from "./pages/NotFound.jsx";
 import Login from "./pages/Login.jsx";
 import DashboardLayout from "./layouts/DashboardLayout.jsx";
-import ApartmentShow from "./pages/ApartmentShow.jsx";
 import ApartmentEdit from "./pages/ApartmentEdit.jsx";
 import ApartmentIndex from "./pages/ApartmentIndex.jsx";
 import ApartmentCreate from "./pages/ApartmentCreate.jsx";
@@ -51,18 +50,19 @@ function App() {
               </PrivatePage>
             }>
 
-              {/* Index */}
-              <Route index element={<ApartmentIndex />} />
+              {/* Appartamenti Dashboard */}
+              <Route path="apartments">
+                {/* Index */}
+                <Route index element={<ApartmentIndex />} />
 
-              <Route path=":slug" >
-                {/* Show */}
-                <Route index element={<ApartmentShow />} />
-                {/* Edit */}
-                <Route path="edit" element={<ApartmentEdit />} />
-              </ Route>
+                <Route path=":slug" >
+                  {/* Edit */}
+                  <Route path="edit" element={<ApartmentEdit />} />
+                </Route>
 
-              {/* Crea */}
-              <Route path="create" element={<ApartmentCreate />} />
+                {/* Crea */}
+                <Route path="create" element={<ApartmentCreate />} />
+              </Route>
 
             </Route>
 
