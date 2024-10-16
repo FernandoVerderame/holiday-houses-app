@@ -190,44 +190,92 @@ const show = async (req, res) => {
 const update = async (req, res) => {
     try {
         const { slug } = req.params;
-        const { title, description, categories } = req.body;
+        const { title, description, rooms, beds, bathrooms, sqm, guests, address, services } = req.body;
+
+        // Recupero l'ID dell'utente tramite il token
+        const token = req.headers.authorization.split(" ")[1];
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const userEmail = decoded.email;
+        const user = await prisma.user.findUnique({ where: { email: userEmail } });
+        const userId = user.id;
+
+        // Recupero l'appartamento
+        const existingApartment = await prisma.apartment.findUnique({
+            where: { slug }
+        });
+
+        if (!existingApartment) {
+            return res.status(404).json({ error: "Appartamento non trovato" });
+        }
+
+        if (existingApartment.userId !== userId) {
+            return res.status(403).json({ error: "Non hai il permesso di aggiornare questo appartamento" });
+        }
 
         // Genero lo slug
         const newSlug = createSlug(title);
 
-        const data = {
-            title,
-            slug: newSlug,
-            image: req.file ? `${HOST}:${port}/photo_pics/${req.file.filename}` : '',
-            description,
-            visible: req.body.visible ? true : false,
-            categories: {
-                set: categories.map(category => ({ id: category.id }))
+        // Variabile per latitudine e longitudine
+        let latitude = existingApartment.latitude;
+        let longitude = existingApartment.longitude;
+
+        // Se l'indirizzo è stato modificato, recupero nuove coordinate
+        if (address && address !== existingApartment.address) {
+            const tomTomResponse = await axios.get(`https://api.tomtom.com/search/2/geocode/${encodeURIComponent(address)}.json`, {
+                params: {
+                    key: TOMTOM_API_KEY,
+                    limit: 1,
+                }
+            });
+
+            const results = tomTomResponse.data.results;
+            if (results.length > 0) {
+                latitude = results[0].position.lat;
+                longitude = results[0].position.lon;
+            } else {
+                return res.status(400).json({ error: "Indirizzo non valido" });
             }
         }
 
-        const photo = await prisma.photo.update({
+        // Dati dell'appartamento da aggiornare
+        const data = {
+            title,
+            slug: newSlug,
+            cover: req.file ? `${HOST}:${port}/apartment_covers/${req.file.filename}` : existingApartment.cover,
+            description,
+            visible: req.body.visible ? true : false,
+            rooms: parseInt(rooms),
+            beds: parseInt(beds),
+            bathrooms: parseInt(bathrooms),
+            sqm: parseInt(sqm),
+            guests: parseInt(guests),
+            address,
+            latitude: parseFloat(latitude),
+            longitude: parseFloat(longitude),
+            services: {
+                set: services.map(service => ({ id: parseInt(service.id) })) // Aggiorno i servizi collegati
+            }
+        };
+
+        const updatedApartment = await prisma.apartment.update({
             where: { slug },
             data,
             include: {
-                categories: {
+                services: {
                     select: {
                         id: true,
-                        name: true
-                    }
-                },
-                user: {
-                    select: {
-                        id: true,
-                        name: true
+                        label: true,
+                        icon: true
                     }
                 }
             }
         });
-        res.json(photo);
+
+        res.json(updatedApartment);
+
     } catch (err) {
         if (req.file) {
-            deletePic('photo_pics', req.file.filename);
+            deletePic('apartment_covers', req.file.filename);
         }
         errorHandler(err, req, res);
     }
