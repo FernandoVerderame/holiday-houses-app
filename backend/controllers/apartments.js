@@ -285,15 +285,15 @@ const update = async (req, res) => {
 const destroy = async (req, res) => {
     try {
         const { slug } = req.params;
-        const photo = await prisma.photo.delete({
+        const apartment = await prisma.apartment.delete({
             where: { slug }
         });
 
-        const imageName = photo.image.replace(`${HOST}:${PORT}/photo_pics/`, '');
+        const imageName = apartment.cover.replace(`${HOST}:${PORT}/apartment_covers/`, '');
 
-        if (photo.image) deletePic('photo_pics', imageName);
+        if (apartment.cover) deletePic('apartment_covers', imageName);
 
-        res.status(200).json(`Foto con slug: ${slug} eliminato con successo.`);
+        res.status(200).json(`Appartamento con slug: ${slug} eliminato con successo.`);
     } catch (err) {
         errorHandler(err, req, res);
     }

@@ -1,17 +1,22 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { FaPlusSquare as AddApartment } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "../utils/axiosClient.js";
 import { MdEdit as Edit } from "react-icons/md";
 import { MdDelete as Delete } from "react-icons/md";
 import { FaCheckCircle as Checked } from "react-icons/fa";
 import { FaCircleXmark as NotChecked } from "react-icons/fa6";
-
+import DeleteModal from "../components/Modal/Modal.jsx";
 
 const ApartmentIndex = () => {
 
+    const navigate = useNavigate();
+
     // useState degli appartamenti
     const [apartments, setApartments] = useState([]);
+
+    // useState per lo slug dell'appartamento da eliminare
+    const [apartmentToDelete, setApartmentToDelete] = useState(null);
 
     // Fetch degli appartamenti
     const fecthApartments = async () => {
@@ -24,6 +29,30 @@ const ApartmentIndex = () => {
     useEffect(() => {
         fecthApartments();
     }, []);
+
+    // Funzione per la cancellazione
+    const deleteApartment = async () => {
+        await axios.delete(`/apartments/${apartmentToDelete.slug}`);
+        fecthApartments();
+        setApartmentToDelete(null);
+        setDeleteMode(false);
+        navigate('/dashboard/apartments', {
+            state: { alert: { type: 'error', message: 'Appartamento eliminato con successo!' } }
+        });
+    }
+
+    // Modale
+    const [deleteMode, setDeleteMode] = useState(false);
+
+    const dialogRef = useRef();
+
+    useEffect(() => {
+        if (deleteMode) {
+            dialogRef.current.showModal();
+        } else {
+            dialogRef.current.close();
+        }
+    }, [deleteMode]);
 
     return (
         <>
@@ -38,6 +67,14 @@ const ApartmentIndex = () => {
                             Appartamento
                         </NavLink>
                     </div>
+
+                    {/* Modale eliminazione */}
+                    <DeleteModal
+                        dialogRef={dialogRef}
+                        title={apartmentToDelete?.title}
+                        setDeleteMode={setDeleteMode}
+                        deleteBtn={deleteApartment}
+                    />
 
                     <div className="row">
                         {apartments.length === 0 ? (
@@ -67,7 +104,7 @@ const ApartmentIndex = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {apartments.map(({ id, slug, title, cover, bathrooms, visible, beds, sqm, guests }) => (
+                                            {apartments.map(({ id, slug, title, cover, bathrooms, visible, beds, rooms, sqm, guests }) => (
                                                 <tr key={id}>
                                                     {/* Colonna anteprima immagine */}
                                                     <td className="d-none d-lg-table-cell">
@@ -84,7 +121,7 @@ const ApartmentIndex = () => {
                                                     <td>{visible ? <Checked className="fs-5 text-success" /> : <NotChecked className="fs-5 text-danger" />}</td>
 
                                                     {/* Stanze */}
-                                                    <td>{beds}</td>
+                                                    <td>{rooms}</td>
 
                                                     {/* Letti */}
                                                     <td>{beds}</td>
@@ -101,7 +138,15 @@ const ApartmentIndex = () => {
                                                     {/* Azioni */}
                                                     <td className="text-end">
                                                         <NavLink className="btn btn-warning text-white me-2" to={`/dashboard/apartments/${slug}/edit`}><Edit /></NavLink>
-                                                        <button className="btn btn-danger"><Delete /></button>
+                                                        <button
+                                                            className="btn btn-danger"
+                                                            onClick={() => {
+                                                                setApartmentToDelete({ slug, title });
+                                                                setDeleteMode(true);
+                                                            }}
+                                                        >
+                                                            <Delete />
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             ))}
