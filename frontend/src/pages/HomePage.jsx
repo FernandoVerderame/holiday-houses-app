@@ -68,15 +68,7 @@ const Home = () => {
             </section>
 
             {/* Sezione recensioni */}
-            <section id="reviews">
-                <div className="container">
-                    <h2>Testimonials</h2>
-                    <h4>What our happy customers said about us</h4>
-
-                    <Reviews />
-                </div>
-            </section>
-
+            <Reviews />
         </>
     );
 }

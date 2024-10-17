@@ -22,6 +22,9 @@ const Reviews = () => {
         fetchReviews();
     }, []);
 
+    // Filtra le recensioni visibili
+    const visibleReviews = reviews.filter(review => review.visible === true);
+
     useEffect(() => {
         if (swiperRef.current) {
             const swiper = new Swiper(swiperRef.current, {
@@ -56,38 +59,39 @@ const Reviews = () => {
 
     return (
         <>
-            <div className="row">
-                {reviews?.length === 0 ? (
-                    <div className="col-12">
-                        <NavLink className={`button ${reviewsStyle.btn}`}>Send review</NavLink>
-                    </div>
-                ) : (
-                    <div className={`card ${reviewsStyle.cardReview} swiper`} ref={swiperRef}>
-                        <div className="swiper-wrapper">
-                            {reviews?.map(({ id, name, country, title, description, rating, visible }) => (
-                                visible === true &&
-                                <div key={id} className="swiper-slide">
-                                    <div className="d-flex justify-content-center align-items-center gap-4">
-                                        <h3 className={reviewsStyle.title}>{title}</h3>
-                                        {renderStars(rating)}
+            {visibleReviews.length > 0 && (
+                <section id="reviews">
+                    <div className="container">
+                        <h2>Testimonials</h2>
+                        <h4>What our happy customers said about us</h4>
+
+                        <div className="row">
+                            <div className="col-12">
+                                <div className={`${reviewsStyle.cardReview} swiper`} ref={swiperRef}>
+                                    <div className="swiper-wrapper">
+                                        {visibleReviews?.map(({ id, name, country, title, description, rating }) => (
+                                            <div key={id} className="swiper-slide">
+                                                <div className="d-flex justify-content-center align-items-center gap-4">
+                                                    <h3 className={reviewsStyle.title}>{title}</h3>
+                                                    {renderStars(rating)}
+                                                </div>
+                                                <p className={reviewsStyle.description}>" {description} "</p>
+                                                <div className={reviewsStyle.author}>{name}</div>
+                                                <div className={reviewsStyle.country}>{country}</div>
+                                            </div>
+                                        ))}
                                     </div>
-                                    <p className={reviewsStyle.description}>" {description} "</p>
-                                    <div className={reviewsStyle.author}>{name}</div>
-                                    <div className={reviewsStyle.country}>{country}</div>
+
+                                    <div className={`swiper-button-next ${reviewsStyle.next}`}></div>
+                                    <div className={`swiper-button-prev ${reviewsStyle.prev}`}></div>
+                                    <div className={`swiper-pagination ${reviewsStyle.pagination}`}></div>
                                 </div>
-                            ))}
+                            </div>
                         </div>
 
-                        <div className={`swiper-button-next ${reviewsStyle.next}`}></div>
-                        <div className={`swiper-button-prev ${reviewsStyle.prev}`}></div>
-                        <div className={`swiper-pagination ${reviewsStyle.pagination}`}></div>
                     </div>
-                )}
-
-                <div className="col-12">
-                    <NavLink className={`button ${reviewsStyle.btn}`}>Send review</NavLink>
-                </div>
-            </div>
+                </section>
+            )}
         </>
     );
 };
