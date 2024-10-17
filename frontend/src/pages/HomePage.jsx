@@ -58,14 +58,7 @@ const Home = () => {
             </section>
 
             {/* Sezione appartamenti */}
-            <section id="apartments" >
-                <div className="container">
-                    <h2>Our Homestay</h2>
-                    <h4>We have the best rooms for you</h4>
-
-                    <ApartmentList />
-                </div>
-            </section>
+            <ApartmentList />
 
             {/* Sezione recensioni */}
             <Reviews />

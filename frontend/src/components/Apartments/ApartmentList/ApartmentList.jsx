@@ -22,38 +22,46 @@ const ApartmentList = () => {
 
     return (
         <>
-            <div className="row g-5">
-                {apartments.length === 0 ? (
-                    <div className="col-12">
+            <section id="apartments" >
+                <div className="container">
+                    <h2>Our Homestay</h2>
+                    <h4>We have the best rooms for you</h4>
 
-                        {/* Nel caso non ci appartamenti */}
-                        <p className="text-center text-white h3">Apartments not found!</p>
+                    <div className="row g-5">
+                        {apartments.length === 0 ? (
+                            <div className="col-12">
 
+                                {/* Nel caso non ci appartamenti */}
+                                <p className="text-center h3">Apartments not found!</p>
+
+                            </div>
+                        ) : (
+                            apartments.map(({ id, title, slug, cover, description, visible, beds, sqm, guests }) => (
+                                visible === true &&
+                                <div key={id} className="col-4">
+
+                                    {/* Tasto show del singolo appartamento */}
+                                    <Link to={`/apartments/${slug}`} style={{ textDecoration: 'none', color: 'black' }}>
+
+                                        {/* Card dell'appartamento */}
+                                        <ApartmentCard
+                                            title={title}
+                                            slug={slug}
+                                            cover={cover}
+                                            description={description}
+                                            beds={beds}
+                                            sqm={sqm}
+                                            guests={guests}
+                                        />
+
+                                    </Link>
+                                </div>
+                            ))
+                        )}
                     </div>
-                ) : (
-                    apartments.map(({ id, title, slug, cover, description, visible, beds, sqm, guests }) => (
-                        visible === true &&
-                        <div key={id} className="col-4">
 
-                            {/* Tasto show del singolo appartamento */}
-                            <Link to={`/apartments/${slug}`} style={{ textDecoration: 'none', color: 'black' }}>
-
-                                {/* Card dell'appartamento */}
-                                <ApartmentCard
-                                    title={title}
-                                    slug={slug}
-                                    cover={cover}
-                                    description={description}
-                                    beds={beds}
-                                    sqm={sqm}
-                                    guests={guests}
-                                />
-
-                            </Link>
-                        </div>
-                    ))
-                )}
-            </div>
+                </div>
+            </section>
         </>
     );
 };
