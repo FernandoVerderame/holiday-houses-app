@@ -365,7 +365,8 @@ ul {
 
 #dashboard-apartments,
 #dashboard-messages,
-#dashboard-reviews {
+#dashboard-reviews,
+#dashboard-gallery {
     background-color: #1b72e8;
 
     .star-position {
@@ -390,5 +391,24 @@ ul {
 #dashboard-messages {
     .header-main {
         background-color: #1b72e8;
+    }
+}
+
+#dashboard-gallery {
+    .card {
+        position: relative;
+
+        .delete-btn {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            padding: 2px;
+
+            .icon-btn {
+                font-size: 17px;
+                position: relative;
+                bottom: 2px;
+            }
+        }
     }
 }

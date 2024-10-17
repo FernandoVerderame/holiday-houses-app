@@ -44,7 +44,11 @@ const store = async (req, res, next) => {
 // Index
 const index = async (req, res, next) => {
     try {
-        const images = await prisma.image.findMany();
+        const images = await prisma.image.findMany({
+            include: {
+                apartment: true
+            }
+        });
         res.json(images);
     } catch (err) {
         errorHandler(err, req, res);
