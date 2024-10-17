@@ -5,8 +5,12 @@ import Alert from "../components/Alert/Alert.jsx";
 import { format } from 'date-fns';
 import { it } from 'date-fns/locale';
 import { FaStar as Star } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { MdDelete as Delete } from "react-icons/md";
 
 const Reviews = () => {
+
+    const navigate = useNavigate();
 
     // useState Alert
     const [alert, setAlert] = useState(null);
@@ -40,9 +44,9 @@ const Reviews = () => {
             setReviews(updatedReviews);
 
             // Mostra un alert per confermare l'aggiornamento
-            setAlert({ type: 'success', message: `Recensione con id "${id}" aggiornata con successo!` });
+            setAlert({ type: 'success', message: `Recensione aggiornata con successo!` });
         } catch (error) {
-            setAlert({ type: 'error', message: `Errore nell'aggiornamento della recensione con id "${id}".` });
+            setAlert({ type: 'error', message: `Errore nell'aggiornamento della recensione!` });
         }
     };
 
@@ -52,10 +56,12 @@ const Reviews = () => {
     // Chiamata per l'eliminazione della recensione
     const deleteReview = async () => {
         if (reviewToDelete) {
-            await axios.delete(`/reviews/${reviewToDelete}`);
-            setReviews(reviews.filter(review => review.id !== reviewToDelete));
+            await axios.delete(`/reviews/${reviewToDelete.id}`);
+            fetchReviews();
+            setReviewToDelete(null);
             setDeleteMode(false);
-            setAlert({ type: 'error', review: `Recensione con id:"${reviewToDelete}" eliminato con successo!` });
+            navigate('/dashboard/reviews');
+            setAlert({ type: 'error', message: `Recensione di: "${reviewToDelete.name}" eliminata con successo!` });
         }
     }
 
@@ -74,9 +80,12 @@ const Reviews = () => {
 
     // Formattazione data
     const formatDate = (dateString) => {
+        if (!dateString) return "Data non disponibile";  // Controlla se la data è null o indefinita
         const date = new Date(dateString);
+        if (isNaN(date)) return "Data non valida";  // Controlla se la data è invalida
         return format(date, 'dd/MM/yy HH:mm', { locale: it });
     };
+
 
     return (
         <section id="dashboard-reviews">
@@ -85,19 +94,10 @@ const Reviews = () => {
                     <h1 className="m-0 text-white">Recensioni</h1>
                 </div>
 
-                {/* Mostra l'alert se esiste */}
-                {alert && (
-                    <Alert
-                        type={alert.type}
-                        message={alert.message}
-                        onClose={() => setAlert(null)}
-                    />
-                )}
-
                 {/* Modale eliminazione */}
                 <DeleteModal
                     dialogRef={dialogRef}
-                    title={reviewToDelete}
+                    title={`Recensione di: "${reviewToDelete?.name}" del ${formatDate(reviewToDelete?.createdAt)}`}
                     setDeleteMode={setDeleteMode}
                     deleteBtn={deleteReview}
                 />
@@ -114,6 +114,16 @@ const Reviews = () => {
                         <div className="col-12 bg-gray">
                             <div className="container-fluid">
                                 <div className="mt-4 p-2">
+
+                                    {/* Mostra l'alert se esiste */}
+                                    {alert && (
+                                        <Alert
+                                            type={alert.type}
+                                            message={alert.message}
+                                            onClose={() => setAlert(null)}
+                                        />
+                                    )}
+
                                     <table className="table table-white table-hover shadow-lg shadow-border">
                                         {/* Tabella recensioni */}
                                         <thead className="table-light">
@@ -126,6 +136,7 @@ const Reviews = () => {
                                                 <th scope="col">Pubblicata</th>
                                                 <th scope="col">Appartamento</th>
                                                 <th scope="col" className="d-none d-lg-table-cell">Data</th>
+                                                <th scope="col"></th>
                                             </tr>
                                         </thead>
 
@@ -146,7 +157,7 @@ const Reviews = () => {
                                                         <div className="form-check form-switch">
                                                             <input
                                                                 type="checkbox"
-                                                                role="switch"
+                                                                role="button"
                                                                 checked={visible}
                                                                 onChange={() => toggleReviewVisibility(id, visible)}
                                                                 className="form-check-input"
@@ -158,6 +169,18 @@ const Reviews = () => {
                                                     <td>{apartment?.title || 'N/A'}</td>
 
                                                     <td className="d-none d-lg-table-cell">{formatDate(createdAt)}</td>
+
+                                                    <td className="text-end">
+                                                        <button
+                                                            className="btn btn-danger"
+                                                            onClick={() => {
+                                                                setReviewToDelete({ id, name, createdAt });
+                                                                setDeleteMode(true);
+                                                            }}
+                                                        >
+                                                            <Delete />
+                                                        </button>
+                                                    </td>
                                                 </tr>
                                             ))}
                                         </tbody>

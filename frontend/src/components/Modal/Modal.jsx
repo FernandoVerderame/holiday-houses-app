@@ -7,7 +7,7 @@ const DeleteModal = ({ dialogRef, setDeleteMode, deleteBtn, title }) => {
                 <h3>Sei sicuro?</h3>
                 <CloseIcon onClick={() => setDeleteMode(false)} role='button' />
             </div>
-            <p>Se procedi, eliminerai definitivamente: "{title}".</p>
+            <p>Se procedi, eliminerai definitivamente: {title}.</p>
             <button
                 onClick={deleteBtn}
                 className="btn btn-danger btn-sm"

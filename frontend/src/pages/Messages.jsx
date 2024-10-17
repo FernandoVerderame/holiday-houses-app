@@ -4,8 +4,12 @@ import DeleteModal from "../components/Modal/Modal.jsx";
 import Alert from "../components/Alert/Alert.jsx";
 import { format } from 'date-fns';
 import { it } from 'date-fns/locale';
+import { MdDelete as Delete } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const Messages = () => {
+
+    const navigate = useNavigate();
 
     // useState Alert
     const [alert, setAlert] = useState(null);
@@ -30,10 +34,12 @@ const Messages = () => {
     // Chiamata per l'eliminazione del messaggio
     const deleteMessage = async () => {
         if (messageToDelete) {
-            await axios.delete(`/messages/${messageToDelete}`);
-            setMessages(messages.filter(message => message.id !== messageToDelete));
+            await axios.delete(`/messages/${messageToDelete.id}`);
+            fetchMessages();
+            setMessageToDelete(null);
             setDeleteMode(false);
-            setAlert({ type: 'error', message: `Messaggio con id:"${messageToDelete}" eliminato con successo!` });
+            navigate('/dashboard/messages');
+            setAlert({ type: 'error', message: `Messaggio di "${messageToDelete.name}" eliminato con successo!` });
         }
     }
 
@@ -50,9 +56,10 @@ const Messages = () => {
         }
     }, [deleteMode]);
 
-    // Formattazione data
     const formatDate = (dateString) => {
+        if (!dateString) return "Data non disponibile";  // Controlla se la data è null o indefinita
         const date = new Date(dateString);
+        if (isNaN(date)) return "Data non valida";  // Controlla se la data è invalida
         return format(date, 'dd/MM/yy HH:mm', { locale: it });
     };
 
@@ -63,19 +70,10 @@ const Messages = () => {
                     <h1 className="m-0 text-white">Messaggi</h1>
                 </div>
 
-                {/* Mostra l'alert se esiste */}
-                {alert && (
-                    <Alert
-                        type={alert.type}
-                        message={alert.message}
-                        onClose={() => setAlert(null)}
-                    />
-                )}
-
                 {/* Modale eliminazione */}
                 <DeleteModal
                     dialogRef={dialogRef}
-                    title={messageToDelete}
+                    title={`Messaggio di: "${messageToDelete?.name}" del ${formatDate(messageToDelete?.createdAt)}`}
                     setDeleteMode={setDeleteMode}
                     deleteBtn={deleteMessage}
                 />
@@ -92,6 +90,16 @@ const Messages = () => {
                         <div className="col-12 bg-gray">
                             <div className="container-fluid">
                                 <div className="mt-4 p-2">
+
+                                    {/* Mostra l'alert se esiste */}
+                                    {alert && (
+                                        <Alert
+                                            type={alert.type}
+                                            message={alert.message}
+                                            onClose={() => setAlert(null)}
+                                        />
+                                    )}
+
                                     <table className="table table-white table-hover shadow-lg shadow-border">
                                         {/* Tabella messaggi */}
                                         <thead className="table-light">
@@ -101,6 +109,7 @@ const Messages = () => {
                                                 <th scope="col" className="d-none d-lg-table-cell">Telefono</th>
                                                 <th scope="col">Contenuto</th>
                                                 <th scope="col" className="d-none d-lg-table-cell">Data</th>
+                                                <th scope="col"></th>
                                             </tr>
                                         </thead>
 
@@ -116,6 +125,18 @@ const Messages = () => {
                                                     <td>{content}</td>
 
                                                     <td className="d-none d-lg-table-cell">{formatDate(createdAt)}</td>
+
+                                                    <td className="text-end">
+                                                        <button
+                                                            className="btn btn-danger"
+                                                            onClick={() => {
+                                                                setMessageToDelete({ id, name, createdAt });
+                                                                setDeleteMode(true);
+                                                            }}
+                                                        >
+                                                            <Delete />
+                                                        </button>
+                                                    </td>
                                                 </tr>
                                             ))}
                                         </tbody>

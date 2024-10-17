@@ -7,10 +7,14 @@ import { MdDelete as Delete } from "react-icons/md";
 import { FaCheckCircle as Checked } from "react-icons/fa";
 import { FaCircleXmark as NotChecked } from "react-icons/fa6";
 import DeleteModal from "../components/Modal/Modal.jsx";
+import Alert from "../components/Alert/Alert.jsx";
 
 const ApartmentIndex = () => {
 
     const navigate = useNavigate();
+
+    // useState Alert
+    const [alert, setAlert] = useState(null);
 
     // useState degli appartamenti
     const [apartments, setApartments] = useState([]);
@@ -36,9 +40,8 @@ const ApartmentIndex = () => {
         fecthApartments();
         setApartmentToDelete(null);
         setDeleteMode(false);
-        navigate('/dashboard/apartments', {
-            state: { alert: { type: 'error', message: 'Appartamento eliminato con successo!' } }
-        });
+        navigate('/dashboard/apartments');
+        setAlert({ type: 'error', message: `Appartamento "${apartmentToDelete.title}" eliminato con successo!` });
     }
 
     // Modale
@@ -71,7 +74,7 @@ const ApartmentIndex = () => {
                     {/* Modale eliminazione */}
                     <DeleteModal
                         dialogRef={dialogRef}
-                        title={apartmentToDelete?.title}
+                        title={`"${apartmentToDelete?.title}"`}
                         setDeleteMode={setDeleteMode}
                         deleteBtn={deleteApartment}
                     />
@@ -87,6 +90,16 @@ const ApartmentIndex = () => {
                         ) : (
                             <div className="col-12 bg-gray">
                                 <div className="mt-4 p-2">
+
+                                    {/* Mostra l'alert se esiste */}
+                                    {alert && (
+                                        <Alert
+                                            type={alert.type}
+                                            message={alert.message}
+                                            onClose={() => setAlert(null)}
+                                        />
+                                    )}
+
                                     {/* Tabella appartamenti */}
                                     <table className="table table-hover shadow-lg shadow-border">
                                         <thead className="table-light">
