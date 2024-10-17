@@ -48,14 +48,7 @@ const Home = () => {
             </section>
 
             {/* Perchè scegliere noi */}
-            <section id="choose-us" >
-                <div className="container">
-                    <h2>Why Choose Us</h2>
-                    <h4>Why should you choose our apartment?</h4>
-
-                    <ChooseUs />
-                </div>
-            </section>
+            <ChooseUs />
 
             {/* Sezione appartamenti */}
             <ApartmentList />

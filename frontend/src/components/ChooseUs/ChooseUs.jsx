@@ -5,35 +5,43 @@ import { GiReceiveMoney as Investment } from "react-icons/gi";
 const ChooseUs = () => {
     return (
         <>
-            <div className="row g-5">
-                <div className="col-4">
-                    <div className="card">
-                        <div className="icon">
-                            <Panorama className="fs-1" />
+            <section id="choose-us" >
+                <div className="container">
+                    <h2>Why Choose Us</h2>
+                    <h4>Why should you choose our apartment?</h4>
+
+                    <div className="row g-5">
+                        <div className="col-4">
+                            <div className="card">
+                                <div className="icon">
+                                    <Panorama className="fs-1" />
+                                </div>
+                                <h5>Vision Panorama</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium similique dolorem neque accusantium animi provident, aperiam quibusdam temporibus.</p>
+                            </div>
                         </div>
-                        <h5>Vision Panorama</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium similique dolorem neque accusantium animi provident, aperiam quibusdam temporibus.</p>
-                    </div>
-                </div>
-                <div className="col-4">
-                    <div className="card">
-                        <div className="icon">
-                            <Diamond className="fs-1" />
+                        <div className="col-4">
+                            <div className="card">
+                                <div className="icon">
+                                    <Diamond className="fs-1" />
+                                </div>
+                                <h5>5 Star Standard Living</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium similique dolorem neque accusantium animi provident, aperiam quibusdam temporibus.</p>
+                            </div>
                         </div>
-                        <h5>5 Star Standard Living</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium similique dolorem neque accusantium animi provident, aperiam quibusdam temporibus.</p>
-                    </div>
-                </div>
-                <div className="col-4">
-                    <div className="card">
-                        <div className="icon">
-                            <Investment className="fs-1" />
+                        <div className="col-4">
+                            <div className="card">
+                                <div className="icon">
+                                    <Investment className="fs-1" />
+                                </div>
+                                <h5>Resonable Investment Rate</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium similique dolorem neque accusantium animi provident, aperiam quibusdam temporibus.</p>
+                            </div>
                         </div>
-                        <h5>Resonable Investment Rate</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium similique dolorem neque accusantium animi provident, aperiam quibusdam temporibus.</p>
                     </div>
+
                 </div>
-            </div>
+            </section>
         </>
     );
 };
