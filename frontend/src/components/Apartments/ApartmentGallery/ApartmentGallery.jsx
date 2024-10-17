@@ -27,7 +27,7 @@ const ApartmentGallery = ({ filteredImages }) => {
         <>
             {filteredImages?.length === 0 ? (
                 <div className="col-12">
-                    <p className="text-center text-white h3">Gallery images not found!</p>
+                    <p className="text-center h3">Gallery images not found!</p>
                 </div>
             ) : (
                 <div className={`${apartmentGalleryStyle.gallery} swiper`}>
