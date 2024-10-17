@@ -1,4 +1,4 @@
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaPlusSquare as AddApartment } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
 import axios from "../utils/axiosClient.js";
@@ -9,7 +9,7 @@ import { FaCircleXmark as NotChecked } from "react-icons/fa6";
 import DeleteModal from "../components/Modal/Modal.jsx";
 import Alert from "../components/Alert/Alert.jsx";
 
-const ApartmentIndex = () => {
+const ApartmentsIndex = () => {
 
     const navigate = useNavigate();
 
@@ -64,6 +64,7 @@ const ApartmentIndex = () => {
                 <div className="container-fluid">
                     <div className="d-flex justify-content-between align-items-center p-4">
                         <h1 className="m-0 text-white">Appartamenti</h1>
+
                         {/* Aggiungi appartamento */}
                         <NavLink className="btn btn-primary border" to={'/dashboard/apartments/create'}>
                             <AddApartment className="me-2" />
@@ -172,4 +173,4 @@ const ApartmentIndex = () => {
     );
 };
 
-export default ApartmentIndex;
+export default ApartmentsIndex;

@@ -388,7 +388,7 @@ ul {
 
 #create-apartment,
 #edit-apartment,
-#dashboard-messages {
+#create-image {
     .header-main {
         background-color: #1b72e8;
     }
@@ -402,12 +402,13 @@ ul {
             position: absolute;
             right: 5px;
             top: 5px;
-            padding: 2px;
+            padding: 0;
 
             .icon-btn {
                 font-size: 17px;
                 position: relative;
                 bottom: 2px;
+                color: white;
             }
         }
     }

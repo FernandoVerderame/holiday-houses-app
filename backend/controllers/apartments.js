@@ -285,13 +285,32 @@ const update = async (req, res) => {
 const destroy = async (req, res) => {
     try {
         const { slug } = req.params;
-        const apartment = await prisma.apartment.delete({
+        // Trova l'appartamento e tutte le immagini correlate
+        const apartment = await prisma.apartment.findUnique({
+            where: { slug },
+            include: {
+                images: true // Includi le immagini correlate
+            }
+        });
+
+        if (!apartment) {
+            return res.status(404).json({ message: 'Appartamento non trovato' });
+        }
+
+        // Elimina l'appartamento (e le immagini correlate grazie al cascade)
+        await prisma.apartment.delete({
             where: { slug }
         });
 
-        const imageName = apartment.cover.replace(`${HOST}:${port}/apartment_covers/`, '');
+        // Elimina il file di copertina, se esiste
+        const coverImageName = apartment.cover.replace(`${HOST}:${port}/apartment_covers/`, '');
+        if (apartment.cover) deletePic('apartment_covers', coverImageName);
 
-        if (apartment.cover) deletePic('apartment_covers', imageName);
+        // Elimina le immagini correlate dal filesystem
+        apartment.images.forEach(image => {
+            const imageName = image.url.replace(`${HOST}:${port}/apartment_images/`, '');
+            deletePic('apartment_images', imageName);
+        });
 
         res.status(200).json(`Appartamento con slug: ${slug} eliminato con successo.`);
     } catch (err) {

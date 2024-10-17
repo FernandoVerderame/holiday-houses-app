@@ -6,7 +6,7 @@ const FormApartment = ({ initialData, onSubmit }) => {
 
     const { services } = useGlobal();
 
-    // Photo di default
+    // Appartamento di default
     const defaultApartmentData = initialData || {
         title: '',
         description: '',
@@ -21,7 +21,7 @@ const FormApartment = ({ initialData, onSubmit }) => {
         visible: false
     }
 
-    // useState del singolo nuovo Post
+    // useState del singolo nuovo Appartamento
     const [apartmentData, setApartmentData] = useState(defaultApartmentData);
 
     useEffect(() => {
@@ -30,7 +30,7 @@ const FormApartment = ({ initialData, onSubmit }) => {
         }
     }, [initialData]);
 
-    // Campo delle categorie
+    // Campo dei servizi
     const handleField = (name, value) => {
 
         setApartmentData(curr => ({
@@ -45,7 +45,7 @@ const FormApartment = ({ initialData, onSubmit }) => {
         onSubmit(apartmentData);
     }
 
-    // Update della foto
+    // Update dell'appartamento
     const changeApartmentData = (key, newValue) => {
         setApartmentData(data => ({ ...data, [key]: newValue }));
     }

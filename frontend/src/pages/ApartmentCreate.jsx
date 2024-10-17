@@ -1,7 +1,6 @@
-import { useState } from "react";
 import axios from "../utils/axiosClient.js";
 import FormApartment from "../components/Dashboard/FormApartment/FormApartment.jsx";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ApartmentCreate = () => {
 
@@ -17,7 +16,7 @@ const ApartmentCreate = () => {
         });
 
         if (res.status < 400) {
-            // Redirect all'appartamento appena creato con messaggio di successo come stato
+            // Redirect alla dashboard degli appartamenti
             navigate(`/dashboard/apartments`, {
                 state: { alert: { type: 'success', message: 'Appartamento creato con successo!' } }
             });
