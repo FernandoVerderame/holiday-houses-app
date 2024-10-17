@@ -11,11 +11,12 @@ import NotFound from "./pages/NotFound.jsx";
 import Login from "./pages/Login.jsx";
 import DashboardLayout from "./layouts/DashboardLayout.jsx";
 import ApartmentEdit from "./pages/ApartmentEdit.jsx";
-import ApartmentIndex from "./pages/ApartmentIndex.jsx";
+import ApartmentsIndex from "./pages/ApartmentsIndex.jsx";
 import ApartmentCreate from "./pages/ApartmentCreate.jsx";
 import Messages from "./pages/Messages.jsx";
 import Reviews from "./pages/Reviews.jsx";
-import Gallery from "./pages/Gallery.jsx";
+import ImagesIndex from "./pages/ImagesIndex.jsx";
+import ImagesCreate from "./pages/ImagesCreate.jsx";
 
 function App() {
   return (
@@ -56,7 +57,7 @@ function App() {
               {/* Appartamenti Dashboard */}
               <Route path="apartments">
                 {/* Index */}
-                <Route index element={<ApartmentIndex />} />
+                <Route index element={<ApartmentsIndex />} />
 
                 <Route path=":slug" >
                   {/* Edit */}
@@ -80,9 +81,12 @@ function App() {
               </Route>
 
               {/* Galleria */}
-              <Route path="gallery">
+              <Route path="images">
                 {/* Index */}
-                <Route index element={<Gallery />} />
+                <Route index element={<ImagesIndex />} />
+
+                {/* Crea */}
+                <Route path="create" element={<ImagesCreate />} />
               </Route>
 
             </Route>

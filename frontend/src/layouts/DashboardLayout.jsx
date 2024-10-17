@@ -34,7 +34,7 @@ const DashboardLayout = () => {
                         <li>
                             <NavLink
                                 className={({ isActive }) => `nav-link text-white p-0 ${isActive ? 'fw-bold' : ''}`}
-                                to={'/dashboard/gallery'}>
+                                to={'/dashboard/images'}>
                                 Galleria
                             </NavLink>
                         </li>
