@@ -38,7 +38,7 @@ const ApartmentDetail = () => {
 
     // Funzione per verificare il caricamento
     const checkLoading = () => {
-        if (apartment && images.length > 0) {
+        if (apartment && images.length >= 0) {
             setLoading(false);
         }
     };
