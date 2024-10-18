@@ -113,13 +113,7 @@ const ApartmentDetail = () => {
             </section>
 
             {/* Sezione appartamenti */}
-            <section id="apartments">
-                <div className="container">
-                    <h2>Other Homestay</h2>
-                    <h4>You may also like other homestay</h4>
-                    <ApartmentList />
-                </div>
-            </section>
+            <ApartmentList />
         </>
     );
 };
