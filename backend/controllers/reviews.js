@@ -12,7 +12,7 @@ const jwt = require("jsonwebtoken");
 // Store
 const store = async (req, res, next) => {
 
-    const { name, country, title, description, rating } = req.body;
+    const { name, country, title, description, rating, apartmentId } = req.body;
 
     const data = {
         name,
@@ -20,7 +20,7 @@ const store = async (req, res, next) => {
         title,
         description,
         rating: rating || 1,
-        apartmentId: req.body.apartmentId ? req.body.apartmentId : null,
+        apartmentId: apartmentId ? parseInt(apartmentId) : null,
         visible: false,
         userId: 1
     }
@@ -47,7 +47,7 @@ const index = async (req, res, next) => {
                     apartmentId: parseInt(apartmentId)
                 },
                 orderBy: [
-                    { createdAt: 'desc' }
+                    { createdAt: 'asc' }
                 ],
                 include: {
                     apartment: {

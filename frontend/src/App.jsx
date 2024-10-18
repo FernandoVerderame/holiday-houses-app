@@ -6,6 +6,7 @@ import { GlobalProvider } from "./contexts/GlobalContext.jsx";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import PrivatePage from "./middlewares/PrivatePage.jsx";
 import ContactUs from "./pages/ContactUs.jsx";
+import SendReview from "./pages/SendReview.jsx";
 import ScrollToTop from './components/ScrollToTop/ScrollToTop.jsx';
 import NotFound from "./pages/NotFound.jsx";
 import Login from "./pages/Login.jsx";
@@ -44,6 +45,9 @@ function App() {
 
               {/* Contattaci */}
               <Route path="/contact-us" element={<ContactUs />} />
+
+              {/* Invia Recensioni */}
+              <Route path="/send-review" element={<SendReview />} />
 
             </Route>
 
