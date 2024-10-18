@@ -10,7 +10,7 @@ const mapContainerStyle = {
 const options = {
     disableDefaultUI: true,
     zoomControl: true,
-    maxZoom: 18, // Imposta il livello massimo di zoom (puoi modificarlo come preferisci)
+    maxZoom: 17, // Imposta il livello massimo di zoom (puoi modificarlo come preferisci)
 };
 
 const ApartmentMap = ({ lat, lng }) => {
