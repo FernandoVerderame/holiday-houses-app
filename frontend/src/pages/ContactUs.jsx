@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar/Navbar.jsx";
 import { useState } from "react";
 import axios from "../utils/axiosClient.js";
 import Alert from "../components/Alert/Alert.jsx";
+import { FaQuoteLeft as QuoteLeft } from "react-icons/fa6";
+import { FaQuoteRight as QuoteRight } from "react-icons/fa6";
 
 const ContactUs = () => {
 
@@ -26,7 +28,7 @@ const ContactUs = () => {
                     <Navbar />
 
                     <h1>Contact Us</h1>
-                    <p>" Contact us whenever you need "</p>
+                    <p><QuoteLeft className="quote" /> Contact us whenever you need <QuoteRight className="quote" /></p>
                 </div>
             </section>
 

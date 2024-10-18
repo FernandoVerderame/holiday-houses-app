@@ -1,7 +1,8 @@
 import axios from "../../utils/axiosClient.js";
 import { useEffect, useState, useRef } from "react";
 import reviewsStyle from './Reviews.module.scss';
-import { NavLink } from "react-router-dom";
+import { FaQuoteLeft as QuoteLeft } from "react-icons/fa6";
+import { FaQuoteRight as QuoteRight } from "react-icons/fa6";
 
 const Reviews = () => {
     const [reviews, setReviews] = useState([]);
@@ -75,7 +76,7 @@ const Reviews = () => {
                                                     <h3 className={reviewsStyle.title}>{title}</h3>
                                                     {renderStars(rating)}
                                                 </div>
-                                                <p className={reviewsStyle.description}>" {description} "</p>
+                                                <p className={reviewsStyle.description}><QuoteLeft className="quote" /> {description} <QuoteRight className="quote" /></p>
                                                 <div className={reviewsStyle.author}>{name}</div>
                                                 <div className={reviewsStyle.country}>{country}</div>
                                             </div>
