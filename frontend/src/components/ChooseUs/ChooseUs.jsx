@@ -11,7 +11,7 @@ const ChooseUs = () => {
                     <h4>Why should you choose our apartment?</h4>
 
                     <div className="row g-5">
-                        <div className="col-4">
+                        <div className="col-md-4">
                             <div className="card">
                                 <div className="icon">
                                     <Panorama className="fs-1" />
@@ -20,7 +20,7 @@ const ChooseUs = () => {
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium similique dolorem neque accusantium animi provident, aperiam quibusdam temporibus.</p>
                             </div>
                         </div>
-                        <div className="col-4">
+                        <div className="col-md-4">
                             <div className="card">
                                 <div className="icon">
                                     <Diamond className="fs-1" />
@@ -29,7 +29,7 @@ const ChooseUs = () => {
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium similique dolorem neque accusantium animi provident, aperiam quibusdam temporibus.</p>
                             </div>
                         </div>
-                        <div className="col-4">
+                        <div className="col-md-4">
                             <div className="card">
                                 <div className="icon">
                                     <Investment className="fs-1" />

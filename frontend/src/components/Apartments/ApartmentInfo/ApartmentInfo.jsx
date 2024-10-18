@@ -86,7 +86,7 @@ const ApartmentInfo = ({ title, description, rooms, beds, bathrooms, sqm, guests
 
             {/* Info */}
             <div className='row g-5'>
-                <div className='col-9'>
+                <div className='col-md-12 col-lg-9'>
                     {activeSection === 'description' && (
                         <div className={apartmentInfoStyle.description}>
                             {description ? description : 'No description available.'}
@@ -145,7 +145,7 @@ const ApartmentInfo = ({ title, description, rooms, beds, bathrooms, sqm, guests
                         </div>
                     )}
                 </div>
-                <div className='col-3'>
+                <div className='col-lg-3'>
                     <div className={apartmentInfoStyle.cardInfo}>
                         <h3>{title}</h3>
 
@@ -153,12 +153,12 @@ const ApartmentInfo = ({ title, description, rooms, beds, bathrooms, sqm, guests
                             <NavLink className={`button ${apartmentInfoStyle.btnCard}`} to={'/contact-us'}>Contact Us</NavLink>
                         </div>
 
-                        <ul>
-                            <li><span>Guests :</span>{guests}</li>
-                            <li><span>Rooms :</span>{rooms}</li>
-                            <li><span>Beds :</span>{beds}</li>
-                            <li><span>Bathrooms :</span>{bathrooms}</li>
-                            <li><span>Sqm :</span>{sqm}m<sup>2</sup></li>
+                        <ul className='flex-lg-column justify-content-md-center mx-auto'>
+                            <li><span>Guests:</span>{guests}</li>
+                            <li><span>Rooms:</span>{rooms}</li>
+                            <li><span>Beds:</span>{beds}</li>
+                            <li><span>Bathrooms:</span>{bathrooms}</li>
+                            <li><span>Sqm:</span>{sqm}m<sup>2</sup></li>
                         </ul>
                     </div>
                 </div>

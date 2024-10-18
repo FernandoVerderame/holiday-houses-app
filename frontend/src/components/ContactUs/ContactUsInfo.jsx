@@ -7,7 +7,7 @@ const ContactUsInfo = () => {
         <>
             <div className="card-info">
                 <div className="row g-5">
-                    <div className="col-4">
+                    <div className="col-md-4">
                         <div className="card">
                             <div className="icon">
                                 <Address className="fs-1" />
@@ -16,7 +16,7 @@ const ContactUsInfo = () => {
                             <p>Melbourne's GPO 350 Bourke St.</p>
                         </div>
                     </div>
-                    <div className="col-4">
+                    <div className="col-md-4">
                         <div className="card">
                             <div className="icon">
                                 <Chat className="fs-1" />
@@ -25,7 +25,7 @@ const ContactUsInfo = () => {
                             <p>+39 3407501645</p>
                         </div>
                     </div>
-                    <div className="col-4">
+                    <div className="col-md-4">
                         <div className="card">
                             <div className="icon">
                                 <Mail className="fs-1" />

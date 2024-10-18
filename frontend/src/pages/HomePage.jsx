@@ -27,7 +27,7 @@ const Home = () => {
 
                     <div className="sec-title">
                         <h1 className="home-title">Welcome <i>to</i> Holiday Houses.</h1>
-                        <p>Chilling out on the bed in your guest house watching television, while wearing your own pajamas, is <br /> sometimes the best part of a vacation.</p>
+                        <p>Chilling out on the bed in your guest house watching television, while wearing your own pajamas, <br className="d-md-block" /> is sometimes the best part of a vacation.</p>
 
                         <div className="d-flex gap-3">
                             <div className="button about" role="button">About Us</div>

@@ -38,7 +38,7 @@ const ApartmentList = () => {
                         ) : (
                             apartments.map(({ id, title, slug, cover, description, visible, beds, sqm, guests }) => (
                                 visible === true &&
-                                <div key={id} className="col-4">
+                                <div key={id} className="col-md-6 col-lg-4">
 
                                     {/* Tasto show del singolo appartamento */}
                                     <Link to={`/apartments/${slug}`} style={{ textDecoration: 'none', color: 'black' }}>
