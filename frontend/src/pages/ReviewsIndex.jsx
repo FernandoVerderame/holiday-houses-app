@@ -8,7 +8,7 @@ import { FaStar as Star } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { MdDelete as Delete } from "react-icons/md";
 
-const Reviews = () => {
+const ReviewsIndex = () => {
 
     const navigate = useNavigate();
 
@@ -195,4 +195,4 @@ const Reviews = () => {
     );
 }
 
-export default Reviews;
+export default ReviewsIndex;

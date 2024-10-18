@@ -7,7 +7,7 @@ import { it } from 'date-fns/locale';
 import { MdDelete as Delete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
-const Messages = () => {
+const MessagesIndex = () => {
 
     const navigate = useNavigate();
 
@@ -151,4 +151,4 @@ const Messages = () => {
     );
 }
 
-export default Messages;
+export default MessagesIndex;
