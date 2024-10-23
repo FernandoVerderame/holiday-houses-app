@@ -25,7 +25,9 @@ const app = express();
 // Importo Cors
 const cors = require("cors");
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://holiday-houses.netlify.app'
+}));
 
 // Definisco le variabili port e host
 const port = process.env.PORT || 3000;
