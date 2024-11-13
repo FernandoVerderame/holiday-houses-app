@@ -7,7 +7,6 @@ import { MdDelete as Delete } from "react-icons/md";
 import { FaPlusSquare as AddImage } from "react-icons/fa";
 
 const ImagesIndex = () => {
-
     const navigate = useNavigate();
 
     // useState Alert
@@ -21,7 +20,7 @@ const ImagesIndex = () => {
         const res = await axios.get('/images');
         const newImages = res.data;
         setImages(newImages);
-    }
+    };
 
     useEffect(() => {
         fetchImages();
@@ -50,11 +49,10 @@ const ImagesIndex = () => {
             navigate('/dashboard/images');
             setAlert({ type: 'error', message: `Immagine con id:"${imageToDelete.id}" eliminato con successo!` });
         }
-    }
+    };
 
     // Modale
     const [deleteMode, setDeleteMode] = useState(false);
-
     const dialogRef = useRef();
 
     useEffect(() => {
@@ -64,7 +62,6 @@ const ImagesIndex = () => {
             dialogRef.current.close();
         }
     }, [deleteMode]);
-
 
     return (
         <>
@@ -90,16 +87,24 @@ const ImagesIndex = () => {
 
                     {/* Mostra le immagini raggruppate per appartamento */}
                     <div className="row">
-                        <div className="col-12">
-                            {/* Mostra l'alert se esiste */}
-                            {alert && (
-                                <Alert
-                                    type={alert.type}
-                                    message={alert.message}
-                                    onClose={() => setAlert(null)}
-                                />
-                            )}
-                        </div>
+                        {images.length === 0 ? (
+                            <div className="col-12 bg-gray">
+                                {/* Nel caso non ci siano appartamenti */}
+                                <p className="text-center h3 mt-4">Non ci sono immagini!</p>
+                            </div>
+                        ) : (
+                            <div className="col-12">
+                                {/* Mostra l'alert se esiste */}
+                                {alert && (
+                                    <Alert
+                                        type={alert.type}
+                                        message={alert.message}
+                                        onClose={() => setAlert(null)}
+                                    />
+                                )}
+                            </div>
+                        )}
+
                         {groupedImagesByApartment && Object.keys(groupedImagesByApartment).map(apartmentTitle => (
                             <div className="col-12 bg-gray pt-4" key={apartmentTitle}>
                                 <h2 className="mb-3">{apartmentTitle}</h2>
@@ -107,7 +112,11 @@ const ImagesIndex = () => {
                                     {groupedImagesByApartment[apartmentTitle].map(({ id, url }) => (
                                         <div className="col-md-3 col-lg-2" key={id}>
                                             <div className="card mb-5">
-                                                <img src={url ? `http://${url}` : "https://placehold.co/600x400"} alt={id} className="img-gallery" />
+                                                <img
+                                                    src={url ? `http://${url}` : "https://placehold.co/600x400"}
+                                                    alt={id}
+                                                    className="img-gallery"
+                                                />
                                                 <button
                                                     className="btn delete-btn"
                                                     onClick={() => {
@@ -124,9 +133,8 @@ const ImagesIndex = () => {
                             </div>
                         ))}
                     </div>
-
                 </div>
-            </section >
+            </section>
         </>
     );
 };
