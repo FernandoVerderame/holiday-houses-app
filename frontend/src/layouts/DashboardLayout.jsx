@@ -1,5 +1,9 @@
 import { NavLink, Outlet } from "react-router-dom";
 import Navbar from "../components/Dashboard/Navbar/Navbar.jsx";
+import { FaHome as Apartments } from "react-icons/fa";
+import { MdEmail as Messages } from "react-icons/md";
+import { MdReviews as Reviews } from "react-icons/md"
+import { FaImage as Images } from "react-icons/fa6";
 
 const DashboardLayout = () => {
     return (
@@ -12,30 +16,34 @@ const DashboardLayout = () => {
                     <ul className="list-group">
                         <li>
                             <NavLink
-                                className={({ isActive }) => `nav-link text-white p-0 ${isActive ? 'fw-bold' : ''}`}
+                                className={({ isActive }) => `nav-link text-white p-0 d-flex align-items-center gap-1 ${isActive ? 'fw-bold' : ''}`}
                                 to={'/dashboard/apartments'}>
-                                Appartamenti
+                                <Apartments />
+                                <span className="d-none d-lg-block">Appartamenti</span>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
-                                className={({ isActive }) => `nav-link text-white p-0 ${isActive ? 'fw-bold' : ''}`}
+                                className={({ isActive }) => `nav-link text-white p-0 d-flex align-items-center gap-1 ${isActive ? 'fw-bold' : ''}`}
                                 to={'/dashboard/messages'}>
-                                Messaggi
+                                <Messages />
+                                <span className="d-none d-lg-block">Messaggi</span>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
-                                className={({ isActive }) => `nav-link text-white p-0 ${isActive ? 'fw-bold' : ''}`}
+                                className={({ isActive }) => `nav-link text-white p-0 d-flex align-items-center gap-1 ${isActive ? 'fw-bold' : ''}`}
                                 to={'/dashboard/reviews'}>
-                                Recensioni
+                                <Reviews />
+                                <span className="d-none d-lg-block">Recensioni</span>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
-                                className={({ isActive }) => `nav-link text-white p-0 ${isActive ? 'fw-bold' : ''}`}
+                                className={({ isActive }) => `nav-link text-white p-0 d-flex align-items-center gap-1 ${isActive ? 'fw-bold' : ''}`}
                                 to={'/dashboard/images'}>
-                                Galleria
+                                <Images />
+                                <span className="d-none d-lg-block">Galleria</span>
                             </NavLink>
                         </li>
                     </ul>
