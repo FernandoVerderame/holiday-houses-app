@@ -28,7 +28,7 @@ const Footer = () => {
                                 <h2 className='mb-0'>Holiday Houses</h2>
                             </div>
 
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis quas voluptas, eveniet officia ipsum aut. Quod sint, consequuntur laboriosam neque soluta, sapiente voluptatum vitae beatae illum, fugit qui sit nisi.</p>
+                            <p>Welcome to Holiday Houses! We offer high-quality apartments for every need. If you're looking for a place to feel at home, you've come to the right place. Book your stay today!</p>
                         </div>
                         <div className='col-4 d-flex flex-column align-items-center'>
                             <h3 className={`mb-4 ${footerStyle.links}`}>Links</h3>
