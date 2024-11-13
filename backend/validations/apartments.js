@@ -21,6 +21,7 @@ const bodyData = {
         },
         trim: true
     },
+
     description: {
         in: ["body"],
         notEmpty: {
@@ -32,11 +33,12 @@ const bodyData = {
             bail: true
         },
         isLength: {
-            errorMessage: 'La descrizione deve contenere almeno 20 caratteri!',
-            options: { min: 20 }
+            errorMessage: 'La descrizione deve contenere tra 20 e 1000 caratteri!',
+            options: { min: 20, max: 1000 }
         },
         trim: true
     },
+
     visible: {
         in: ["body"],
         isBoolean: {
@@ -44,10 +46,11 @@ const bodyData = {
         },
         toBoolean: true
     },
+
     services: {
         in: ["body"],
         notEmpty: {
-            errorMessage: 'Il servizio è obbligatoria!',
+            errorMessage: 'I servizi sono obbligatori!',
             bail: true
         },
         isArray: {
@@ -76,6 +79,51 @@ const bodyData = {
         customSanitizer: {
             options: (ids) => ids.map(id => ({ id: parseInt(id) }))
         }
+    },
+
+    rooms: {
+        in: ["body"],
+        isInt: {
+            errorMessage: 'Il numero di stanze deve essere un numero intero positivo!',
+            options: { min: 1 }
+        },
+        toInt: true // Converte il valore in un numero intero
+    },
+
+    beds: {
+        in: ["body"],
+        isInt: {
+            errorMessage: 'Il numero di letti deve essere un numero intero positivo!',
+            options: { min: 1 }
+        },
+        toInt: true
+    },
+
+    bathrooms: {
+        in: ["body"],
+        isInt: {
+            errorMessage: 'Il numero di bagni deve essere un numero intero positivo!',
+            options: { min: 1 }
+        },
+        toInt: true
+    },
+
+    sqm: {
+        in: ["body"],
+        isInt: {
+            errorMessage: 'La dimensione in metri quadri deve essere un numero intero positivo!',
+            options: { min: 1 }
+        },
+        toInt: true
+    },
+
+    guests: {
+        in: ["body"],
+        isInt: {
+            errorMessage: 'Il numero di ospiti deve essere un numero intero positivo!',
+            options: { min: 1 }
+        },
+        toInt: true
     }
 }
 
