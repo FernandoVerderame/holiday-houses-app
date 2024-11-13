@@ -69,6 +69,11 @@ ul {
     position: absolute;
     bottom: 43%;
 
+    @media (max-width: 767px) {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
     .home-title {
         font-size: 60px;
         z-index: 1;
@@ -404,14 +409,20 @@ ul {
     .sidebar {
         color: white;
         background-color: #051E34;
-        flex-basis: 150px;
+        flex-basis: 170px;
         flex-shrink: 0;
         padding: 30px 20px;
 
         ul {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 25px;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .sidebar {
+            flex-basis: 20px;
         }
     }
 
