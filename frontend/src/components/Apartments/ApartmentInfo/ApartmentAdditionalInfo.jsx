@@ -8,15 +8,15 @@ const ApartmentAdditionalInfo = () => {
         <>
             <div className='row'>
                 {/* Check In */}
-                <div className='col-3 fw-semibold text-black'>Check - In :</div>
+                <div className='col-3 fw-semibold text-black'>Check-In:</div>
                 <div className='col-9 mb-4'>6:00 - 23:00</div>
 
                 {/* Check Out */}
-                <div className='col-3 fw-semibold text-black'>Check - Out :</div>
+                <div className='col-3 fw-semibold text-black'>Check-Out:</div>
                 <div className='col-9 mb-4'>6:00 - 23:00</div>
 
                 {/* Calcellazione / Pagamento */}
-                <div className='col-3 fw-semibold text-black'>Cancellation/prepayment :</div>
+                <div className='col-3 fw-semibold text-black'>Cancellation:</div>
                 <div className='col-9 mb-4'>Cancellation and prepayment policies vary according to guest house type. Please enter the dates of your stay and check the conditions of your required house.</div>
 
                 {/* Bambini ed letti extra */}
@@ -24,16 +24,16 @@ const ApartmentAdditionalInfo = () => {
                 <div className='col-9 mb-4'>All children are welcome. One child under 6 years is charged EUR 50 per night when using existing beds. There is no capacity for extra beds in the room. Supplements are not calculated automatically in the total costs and will have to be paid for separately during your stay.</div>
 
                 {/* Animali domestici */}
-                <div className='col-3 fw-semibold text-black'>Pets :</div>
+                <div className='col-3 fw-semibold text-black'>Pets:</div>
                 <div className='col-9 mb-4'>Pets are allowed.</div>
 
                 {/* Info aggiuntive */}
-                <div className='col-3 fw-semibold text-black'>Additional info :</div>
-                <div className='col-9 mb-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores explicabo iure necessitatibus vel eligendi nobis tempora. Tenetur iure obcaecati ullam esse enim placeat officia? Ut culpa iste debitis harum odio.
-                    Amet animi aut quibusdam esse sunt, eveniet quia deserunt quas voluptas aspernatur veritatis autem fugiat molestias architecto expedita doloremque soluta, ut harum, beatae ullam perferendis! Possimus sit recusandae cum! Veniam.
-                    Hic, laborum natus ullam animi exercitationem enim cum vel rem dignissimos obcaecati totam, dolor repudiandae aspernatur corrupti. Deleniti at, provident doloribus laudantium fugit nesciunt omnis quis quasi fugiat aut autem.
-                    Eveniet, asperiores laudantium! Ipsa, nam aut. Dicta fugiat id quisquam cum temporibus ad optio eum, obcaecati, ab perferendis doloremque nulla quidem deserunt recusandae reprehenderit dolor? Atque laboriosam qui tenetur commodi!
-                    Dolor voluptatibus nostrum velit, itaque maxime eaque quia neque repellendus dignissimos quo voluptatum tempore nobis numquam perspiciatis facilis cupiditate? Veritatis odio tempora modi debitis deserunt, voluptas iste repellat vel commodi.
+                <div className='col-3 fw-semibold text-black'>Additional info:</div>
+                <div className='col-9 mb-4'>Our guest house offers a range of services designed to ensure a comfortable and worry-free stay. Payment for the stay is required at check-in and can be made in cash, by credit card, or via bank transfer. We provide free high-speed Wi-Fi throughout the rooms and common areas, allowing guests to stay connected at all times.
+
+                    Rooms are cleaned daily, with linens and towels changed every three days or upon request to meet guests' needs. The property is accessible to guests with reduced mobility, featuring an elevator and dedicated entrances, and our staff is pleased to provide any specific assistance required.
+
+                    For guests arriving by car, private parking is available with an advance reservation. Additionally, we can arrange convenient airport transfers upon request. Our guests can also enjoy access to a wellness area and a variety of outdoor activities, all bookable on-site, for a stay filled with relaxation and discovery.
                 </div>
 
                 {/* Opzioni di pagamento */}
