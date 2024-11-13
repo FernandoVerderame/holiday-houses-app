@@ -107,17 +107,18 @@ const ApartmentsIndex = () => {
                                             <tr>
                                                 <th scope="col" className="d-none d-lg-table-cell">Anteprima</th>
                                                 <th scope="col">Nome <span className="d-none d-md-inline">Appartamento</span></th>
+                                                <th scope="col">Indirizzo</th>
                                                 <th scope="col">Pubblicato</th>
-                                                <th scope="col">Stanze</th>
-                                                <th scope="col">Letti</th>
-                                                <th scope="col">Bagni</th>
-                                                <th scope="col">SQM</th>
+                                                <th scope="col" className="d-none d-lg-table-cell">Stanze</th>
+                                                <th scope="col" className="d-none d-lg-table-cell">Letti</th>
+                                                <th scope="col" className="d-none d-lg-table-cell">Bagni</th>
+                                                <th scope="col" className="d-none d-lg-table-cell">SQM</th>
                                                 <th scope="col">Ospiti</th>
                                                 <th scope="col"></th>
                                             </tr>
                                         </thead>
                                         <tbody className="table-group-divider">
-                                            {apartments.map(({ id, slug, title, cover, bathrooms, visible, beds, rooms, sqm, guests }) => (
+                                            {apartments.map(({ id, slug, title, address, cover, bathrooms, visible, beds, rooms, sqm, guests }) => (
                                                 <tr key={id}>
                                                     {/* Colonna anteprima immagine */}
                                                     <td className="d-none d-lg-table-cell">
@@ -127,20 +128,23 @@ const ApartmentsIndex = () => {
                                                     {/* Nome appartamento con link */}
                                                     <td>{title}</td>
 
+                                                    {/* Indirizzo */}
+                                                    <td>{address}</td>
+
                                                     {/* Colonna pubblicato */}
                                                     <td>{visible ? <Checked className="fs-5 text-success" /> : <NotChecked className="fs-5 text-danger" />}</td>
 
                                                     {/* Stanze */}
-                                                    <td>{rooms}</td>
+                                                    <td className="d-none d-lg-table-cell">{rooms}</td>
 
                                                     {/* Letti */}
-                                                    <td>{beds}</td>
+                                                    <td className="d-none d-lg-table-cell">{beds}</td>
 
                                                     {/* Bagni */}
-                                                    <td>{bathrooms}</td>
+                                                    <td className="d-none d-lg-table-cell">{bathrooms}</td>
 
                                                     {/* Superficie in metri quadri */}
-                                                    <td>{sqm}</td>
+                                                    <td className="d-none d-lg-table-cell">{sqm}</td>
 
                                                     {/* Ospiti */}
                                                     <td>{guests}</td>
