@@ -38,7 +38,7 @@ const Login = () => {
             <div className="card w-25">
                 <div className="card-header">
                     <div className="card-title text-center">
-                        <h1 className="h2 m-0 d-flex align-items-center justify-content-center gap-2"><UserIcon /><span>Login</span></h1>
+                        <h1 className="h2 m-0 d-flex align-items-center justify-content-center gap-2"><UserIcon /><span>Login Dashboard</span></h1>
                     </div>
                 </div>
                 <div className="card-body">
