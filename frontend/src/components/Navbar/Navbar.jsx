@@ -32,7 +32,7 @@ const Navbar = () => {
                         </NavLink>
                     </div>
                     <div className="center-nav">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0 fs-5 d-flex flex-row gap-5">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0 fs-5 d-flex flex-row">
                             {/* Home link */}
                             <li className="nav-item">
                                 <NavLink
