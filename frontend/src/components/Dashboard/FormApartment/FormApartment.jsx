@@ -11,11 +11,11 @@ const FormApartment = ({ initialData, onSubmit }) => {
         title: '',
         description: '',
         cover: '',
-        rooms: '',
-        beds: '',
-        bathrooms: '',
-        sqm: '',
-        guests: '',
+        rooms: 1,
+        beds: 1,
+        bathrooms: 1,
+        sqm: 1,
+        guests: 1,
         address: '',
         services: [],
         visible: false
@@ -23,6 +23,8 @@ const FormApartment = ({ initialData, onSubmit }) => {
 
     // useState del singolo nuovo Appartamento
     const [apartmentData, setApartmentData] = useState(defaultApartmentData);
+
+    const [apartmentError, setApartmentError] = useState(null);
 
     useEffect(() => {
         if (initialData) {
@@ -42,7 +44,14 @@ const FormApartment = ({ initialData, onSubmit }) => {
     // Submit del Form
     const handleSubmit = async (e) => {
         e.preventDefault();
-        onSubmit(apartmentData);
+        try {
+            await onSubmit(apartmentData);
+        } catch (err) {
+            const { errors } = err.response.data;
+            const error = new Error(errors ? 'Submission Error' : err.response.data);
+            error.errors = errors;
+            setApartmentError(error);
+        }
     }
 
     // Update dell'appartamento
@@ -56,7 +65,7 @@ const FormApartment = ({ initialData, onSubmit }) => {
                 <div className='row'>
 
                     {/* Nome */}
-                    <div className='col-6'>
+                    <div className='col-lg-6'>
                         <div className='mb-5'>
                             <label htmlFor="title" className="form-label h5">Nome</label>
                             <input
@@ -72,7 +81,7 @@ const FormApartment = ({ initialData, onSubmit }) => {
                     </div>
 
                     {/* Indirizzo */}
-                    <div className='col-6'>
+                    <div className='col-lg-6'>
                         <div className='mb-5'>
                             <label htmlFor="address" className="form-label h5">Indirizzo</label>
                             <input
@@ -87,7 +96,7 @@ const FormApartment = ({ initialData, onSubmit }) => {
                     </div>
 
                     {/* Descrizione */}
-                    <div className='col-6'>
+                    <div className='col-lg-6'>
                         <div className='mb-5'>
                             <label htmlFor="description" className="form-label h5">Descrizione</label>
                             <textarea
@@ -103,7 +112,7 @@ const FormApartment = ({ initialData, onSubmit }) => {
                     </div>
 
                     {/* Servizi */}
-                    <div className='col-6'>
+                    <div className='col-lg-6'>
                         <div className='mb-5'>
                             <h5>Servizi</h5>
                             <ul className='d-flex gap-4'>
@@ -129,7 +138,7 @@ const FormApartment = ({ initialData, onSubmit }) => {
                     </div>
 
                     {/* Stanze */}
-                    <div className='col-2'>
+                    <div className='col-sm-4 col-lg-2'>
                         <div className='mb-5'>
                             <label htmlFor="rooms" className="form-label h5">Stanze</label>
                             <input
@@ -139,14 +148,14 @@ const FormApartment = ({ initialData, onSubmit }) => {
                                 value={apartmentData.rooms}
                                 onChange={e => changeApartmentData('rooms', e.target.value)}
                                 className="form-control"
-                                min="0"
-                                placeholder="0"
+                                min="1"
+                                placeholder="1"
                             />
                         </div>
                     </div>
 
                     {/* Letti */}
-                    <div className='col-2'>
+                    <div className='col-sm-4 col-lg-2'>
                         <div className='mb-5'>
                             <label htmlFor="beds" className="form-label h5">Letti</label>
                             <input
@@ -156,14 +165,14 @@ const FormApartment = ({ initialData, onSubmit }) => {
                                 value={apartmentData.beds}
                                 onChange={e => changeApartmentData('beds', e.target.value)}
                                 className="form-control"
-                                min="0"
-                                placeholder="0"
+                                min="1"
+                                placeholder="1"
                             />
                         </div>
                     </div>
 
                     {/* Bagni */}
-                    <div className='col-2'>
+                    <div className='col-sm-4 col-lg-2'>
                         <div className='mb-5'>
                             <label htmlFor="bathrooms" className="form-label h5">Bagni</label>
                             <input
@@ -173,14 +182,14 @@ const FormApartment = ({ initialData, onSubmit }) => {
                                 value={apartmentData.bathrooms}
                                 onChange={e => changeApartmentData('bathrooms', e.target.value)}
                                 className="form-control"
-                                min="0"
-                                placeholder="0"
+                                min="1"
+                                placeholder="1"
                             />
                         </div>
                     </div>
 
                     {/* SQM */}
-                    <div className='col-2'>
+                    <div className='col-sm-4 col-lg-2'>
                         <div className='mb-5'>
                             <label htmlFor="sqm" className="form-label h5">SQM</label>
                             <input
@@ -190,14 +199,14 @@ const FormApartment = ({ initialData, onSubmit }) => {
                                 value={apartmentData.sqm}
                                 onChange={e => changeApartmentData('sqm', e.target.value)}
                                 className="form-control"
-                                min="0"
-                                placeholder="0"
+                                min="1"
+                                placeholder="SQM"
                             />
                         </div>
                     </div>
 
                     {/* Ospiti */}
-                    <div className='col-2'>
+                    <div className='col-sm-4 col-lg-2'>
                         <div className='mb-5'>
                             <label htmlFor="guests" className="form-label h5">Ospiti</label>
                             <input
@@ -207,14 +216,14 @@ const FormApartment = ({ initialData, onSubmit }) => {
                                 value={apartmentData.guests}
                                 onChange={e => changeApartmentData('guests', e.target.value)}
                                 className="form-control"
-                                min="0"
-                                placeholder="0"
+                                min="1"
+                                placeholder="1"
                             />
                         </div>
                     </div>
 
                     {/* Cover */}
-                    <div className='col-6'>
+                    <div className='col-12'>
                         <div className="mb-5">
                             <label htmlFor="cover" className="form-label h5">Cover</label>
                             <input
@@ -241,6 +250,11 @@ const FormApartment = ({ initialData, onSubmit }) => {
                             />
                         </div>
                     </div>
+
+                    {apartmentError !== null && <div className="text-danger">{apartmentError.message}</div>}
+                    {apartmentError?.errors && apartmentError.errors.map((err, index) => (
+                        <div key={`err${index}`} className="text-danger">{err.msg}</div>
+                    ))}
 
                     <div className="d-flex justify-content-end">
                         <button className="btn btn-success"><Save className='me-2' />Salva</button>
