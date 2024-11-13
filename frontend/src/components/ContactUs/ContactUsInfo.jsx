@@ -13,7 +13,7 @@ const ContactUsInfo = () => {
                                 <Address className="fs-1" />
                             </div>
                             <h5>Homestay Addresses</h5>
-                            <p>Melbourne's GPO 350 Bourke St.</p>
+                            <p>Salerno - Italy</p>
                         </div>
                     </div>
                     <div className="col-md-4">
