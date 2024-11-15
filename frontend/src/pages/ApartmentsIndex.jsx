@@ -107,7 +107,7 @@ const ApartmentsIndex = () => {
                                             <tr>
                                                 <th scope="col" className="d-none d-lg-table-cell">Anteprima</th>
                                                 <th scope="col">Nome <span className="d-none d-md-inline">Appartamento</span></th>
-                                                <th scope="col">Indirizzo</th>
+                                                <th scope="col" className="d-none d-lg-table-cell">Indirizzo</th>
                                                 <th scope="col">Pubblicato</th>
                                                 <th scope="col" className="d-none d-lg-table-cell">Stanze</th>
                                                 <th scope="col" className="d-none d-lg-table-cell">Letti</th>
@@ -129,7 +129,7 @@ const ApartmentsIndex = () => {
                                                     <td>{title}</td>
 
                                                     {/* Indirizzo */}
-                                                    <td>{address}</td>
+                                                    <td className="d-none d-lg-table-cell">{address}</td>
 
                                                     {/* Colonna pubblicato */}
                                                     <td>{visible ? <Checked className="fs-5 text-success" /> : <NotChecked className="fs-5 text-danger" />}</td>
